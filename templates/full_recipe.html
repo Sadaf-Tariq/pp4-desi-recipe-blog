@@ -1,20 +1,41 @@
 {% extends 'base.html' %} {% block content %} {% load static %}{% load static %}
 {% load crispy_forms_tags %}
 
+<div id="recipe-detail" class="col-md-6">
+  <div class="recipe-header-container">
+    <div class="recipe-detail-header">123</div>
+    <div class="recipe-detail-img">
+      {% if "placeholder" in recipe.featured_image.url %}
+      <img
+        src="https://res.cloudinary.com/djo7pphyn/image/upload/v1698436271/ujp4et9qmtsvztyj0png.jpg"
+        class="scale"
+        alt="placeholder"
+      />
+      {% else %}
+      <img
+        src="{{ recipe.featured_image.url }}"
+        class="scale"
+        alt="{{ recipe.title }}"
+      />
+      {% endif %}
+    </div>
+  </div>
+</div>
+<!-- 
 <div class="masthead">
   <div class="container">
     <div class="row g-0">
-      <div class="col-md-6 masthead-text">
-        <!-- Post title goes in these h1 tags -->
-        <h1 class="recipe-title">{{ recipe.title }}</h1>
-        <!-- Post author goes before the | the post's created date goes after -->
-        <p class="recipe-subtitle">
+      <div class="col-md-6 masthead-text"> -->
+<!-- Post title goes in these h1 tags -->
+<!-- <h1 class="recipe-title">{{ recipe.title }}</h1> -->
+<!-- Post author goes before the | the post's created date goes after -->
+<!-- <p class="recipe-subtitle">
           {{ recipe.author }} | {{ recipe.created_on }}
         </p>
       </div>
-      <div class="d-none d-md-block col-md-6 masthead-image">
-        <!-- The featured image URL goes in the src attribute -->
-        {% if "placeholder" in recipe.featured_image.url %}
+      <div class="d-none d-md-block col-md-6 masthead-image"> -->
+<!-- The featured image URL goes in the src attribute -->
+<!-- {% if "placeholder" in recipe.featured_image.url %}
         <img
           src="https://res.cloudinary.com/djo7pphyn/image/upload/v1698436271/ujp4et9qmtsvztyj0png.jpg"
           class="scale"
@@ -30,6 +51,6 @@
       </div>
     </div>
   </div>
-</div>
+</div>  -->
 
 {% endblock %}
