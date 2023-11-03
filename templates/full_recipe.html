@@ -3,24 +3,88 @@
 
 <div id="recipe-detail" class="col-md-6">
   <div class="recipe-header-container">
-    <div class="recipe-detail-header">123</div>
-    <div class="recipe-detail-img">
-      {% if "placeholder" in recipe.featured_image.url %}
-      <img
-        src="https://res.cloudinary.com/djo7pphyn/image/upload/v1698436271/ujp4et9qmtsvztyj0png.jpg"
-        class="scale"
-        alt="placeholder"
-      />
-      {% else %}
-      <img
-        src="{{ recipe.featured_image.url }}"
-        class="scale"
-        alt="{{ recipe.title }}"
-      />
-      {% endif %}
+    <div class="recipe-detail-header">
+      <div class="recipe-detail-img">
+        {% if "placeholder" in recipe.featured_image.url %}
+        <img
+          src="https://res.cloudinary.com/djo7pphyn/image/upload/v1698436271/ujp4et9qmtsvztyj0png.jpg"
+          class="scale"
+          alt="placeholder"
+        />
+        {% else %}
+        <img
+          src="{{ recipe.featured_image.url }}"
+          class="scale"
+          alt="{{ recipe.title }}"
+        />
+        {% endif %}
+      </div>
+      <div class="recipe-title">
+        <h1 class="fontM logo-text text-color mb-4 pt-4 mt-2">
+          {{ recipe.title }}
+        </h1>
+        <p class="fontH text-color">
+          This recipe is published by
+          <strong> "{{ recipe.author_name }}" </strong>
+        </p>
+        <p class="fontM text-color font-size">
+          <strong
+            >Rating: {{ recipe.average_rating }}/5.0
+            <i class="far fa-star"></i> | Likes: {{ recipe.number_of_likes }}
+            <i class="far fa-heart"></i> | 
+            Comments: {{ recipe.number_of_comments}} <i class="fa-regular fa-comment"></i>
+          </strong>
+        </p>
+      </div>
     </div>
   </div>
+  
+
+<div class="container all_details">
+    <div class="row">
+        <div class="recipe-info col-12 col-lg-6 text-center align-self-start">
+            <!-- {% if user.id == recipe.author.id %}
+                    <a href="{% url 'update' recipe.slug %}" id="edit-button" class="btn links">Edit</a>
+                    <a href="{% url 'delete' recipe.slug %}" id="delete-button" class="btn links">Delete</a>
+                    {% endif %} -->
+                <p class="fontH">
+                    <strong><i class="fa-solid fa-user-clock"></i>
+                        Prep Time: {{ recipe.prep_time }} min -
+                        <i class="fa-solid fa-clock"></i>
+                        Cook Time: {{ recipe.cooking_time }} min
+                    </strong>
+                </p>
+                <p class="fontH">
+                    <strong><i class="fa-solid fa-spoon"></i> Method: {{ recipe.method }}</strong>
+                </p>
+                <p class="fontH">
+                    <strong><i class="fa-solid fa-bowl-food"></i> Category: {{recipe.category }}</strong>
+                </p>
+                <p class="fontH">
+                    <strong><i class="fa-solid fa-utensils"></i> Servings: {{ recipe.servings }}</strong>
+                </p>
+                <p class="fontH">
+                    <strong><i class="fa-solid fa-weight-scale"></i> Calories per serving: {{ recipe.calories }}</strong>
+                </p>
+                <hr>
+        </div>
+
+        <div class="ingredients-container col-12 col-lg-6 mt-3 align-self-center">
+            <h2 class="fontM" id="ingredients">Ingredients:</h2>
+            {{ recipe.ingredients | safe }} 
+        </div>
+
+        <div class="instructions-container col-12 col-lg-6 mt-3">
+            <h2  class="fontM" id="instructions">Instructions:</h2>
+            {{ recipe.instructions | safe }} 
+        </div>
+    </div>
 </div>
+<p class="fontH">
+    <strong> This recipe was published on: {{ recipe.created_on }} </strong>
+</p>
+</div>
+
 <!-- 
 <div class="masthead">
   <div class="container">
