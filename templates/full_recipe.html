@@ -99,7 +99,7 @@
                     </p>
                     <!-- The body of the comment goes before the | -->
                     <div id="comment{{ comment.id }}">
-                        {{ comment.body | linebreaks }}
+                        {{ comment.comment | linebreaks }}
                     </div>
                     {% if not comment.approved and comment.name == user.username %}
                     <p class="approval">This comment is awaiting approval</p>{% endif %}
@@ -118,7 +118,7 @@
                 {% if user.is_authenticated %}
 
                 <h2 class="fontM comments">Leave a comment:</h3>
-                <p class="fontH">Posting as: {{ user.username }}</p>
+                <p class="fontH">Posting as: {{ user }}</p>
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
