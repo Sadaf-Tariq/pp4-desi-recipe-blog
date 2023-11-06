@@ -104,6 +104,19 @@
       </nav>
     </header>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <section class="container-height">
       <div class="margin-top" id="background-image">
         {% block content %} {% endblock %}
@@ -159,9 +172,13 @@
       </footer>
     </div>
     <!-- font awesome script-->
-    <script
-      src="https://kit.fontawesome.com/1471d6d110.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/1471d6d110.js" crossorigin="anonymous"></script>
+    <script>
+        setTimeout(function () {
+            let messages = document.getElementById('msg');
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 2000);
+    </script>
   </body>
 </html>

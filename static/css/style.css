@@ -370,9 +370,20 @@ body {
 
 /* end */
 
-.featured-image-container {}
 
-@media screen and (max-width: 1300px) {}
+.try {
+    height: 400px;
+    width: 90%;
+    background-color: #3a3a3a;
+    margin: auto;
+    overflow: scroll;
+    overflow-y: hidden;
+}
+
+.try-div-img {
+    width: 300px;
+    height: 350px;
+}
 
 @media screen and (max-width: 557px) {
     .logo-display {

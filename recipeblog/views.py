@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
-from .models import Recipe, Rating, Comment
+from .models import Recipe, Rating, Comment, RecipeCategory
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import CommentForm
@@ -45,7 +45,7 @@ def full_recipe(request, slug, *args, **kwargs):
             comment.recipe = recipe
             comment.save()
             messages.add_message(request, messages.SUCCESS,
-                                 'Comment awaiting moderation.')
+                                 'Comment pending approval!')
         else:
             comment_form = CommentForm()
     else:
@@ -62,3 +62,28 @@ def full_recipe(request, slug, *args, **kwargs):
             "comment_form": comment_form
         },
     )
+
+
+def recipe_like(request, slug, *args, **kwargs):
+    """
+    The view to update the likes. Although it should always be
+    called using the POST method, we have still added some
+    defensive programming to make sure.
+    """
+    post = get_object_or_404(Recipe, slug=slug)
+
+    if request.method == "POST" and request.user.is_authenticated:
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
+
+
+# def CategoryList(request):
+#     queryset = RecipeCategory.objects.all()
+#     context = {
+#         'queryset': queryset
+#     }
+#     return render(request, "home.html", context)

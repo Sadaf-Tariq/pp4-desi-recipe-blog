@@ -34,7 +34,7 @@
             >Rating: {{ recipe.average_rating }}/5.0
             <i class="far fa-star"></i> | Likes: {{ recipe.number_of_likes }}
             <i class="far fa-heart"></i> | 
-            Comments: {{ recipe.number_of_comments}} <i class="fa-regular fa-comment"></i>
+            Comments: {{ comment_count }} <i class="far fa-comments"></i>
           </strong>
         </p>
       </div>
@@ -64,6 +64,30 @@
                 <p class="fontH">
                     <strong><i class="fa-solid fa-weight-scale"></i> Calories per serving: {{ recipe.calories }}</strong>
                 </p>
+                <hr>
+                <div class="col ">
+                    <strong>
+                        {% if user.is_authenticated %}
+                        <form class="d-inline" action="{% url 'recipe_like' recipe.slug %}" method="POST">
+                            {% csrf_token %}
+                            {% if liked %}
+                            <button type="submit" name="recipeblog_id" value="{{recipe.slug}}" class="btn-like" aria-label="like"><i
+                                    class="fas fa-heart"></i></button>
+                            {% else %}
+                            <button type="submit" name="recipeblog_id" value="{{recipe.slug}}" class="btn-like" aria-label="like"><i
+                                    class="far fa-heart"></i></button>
+                            {% endif %}
+                        </form>
+                        {% else %}
+                        <span class="text"><i class="far fa-heart"></i></span>
+                        {% endif %}
+                        <!-- The number of likes goes before the closing strong tag -->
+                        <span class="text">{{ recipe.number_of_likes }} </span>
+                    </strong>
+                    <strong class="text"><i class="far fa-comments"></i>
+                        <!-- Our total_comments variable goes before the closing strong tag -->
+                        {{ comment_count }}</strong>
+                </div>
                 <hr>
         </div>
 
