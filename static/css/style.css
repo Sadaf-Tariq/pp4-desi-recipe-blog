@@ -348,7 +348,7 @@ body {
 
 .category-container {
     height: auto;
-    width: 100%;
+    width: 88%;
     display: flex;
     overflow: auto;
     margin: auto;
@@ -362,6 +362,7 @@ body {
     height: 350px;
     background-color: transparent;
     position: relative;
+    margin-right: 12px;
 }
 
 
