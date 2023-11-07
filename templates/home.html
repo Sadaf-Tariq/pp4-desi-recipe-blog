@@ -66,10 +66,10 @@
         {% for category in model.category_list %}
         <li class="list-group-item flex-list-item ">
             <div class="categories-methods">
-                <a class="cat-text-decor" href="#">
+                <a class="cat-text-decor" href="/category/{{ category }}">
                     <img src="/static/image/Category/{{ category }}.jpg" alt="">
                     <div class="image-flash-cat">
-                        <p class="fontH cat-p"> {{ category }}</p>
+                        <p class="fontH cat-p"> {{ category.food_type }}</p>
                     </div>
                 </a>
             </div>
@@ -93,10 +93,10 @@
         {% for method in model.method_list %}
         <li class="list-group-item flex-list-item ">
             <div class="categories-methods">
-                <a class="method-text-decor" href="#">
+                <a class="method-text-decor" href="/method/{{method}}">
                     <img src="/static/image/Method/{{ method }}.jpg" alt="">
                     <div class="image-flash-method">
-                        <p class="fontH method-p"> {{ method }}</p>
+                        <p class="fontH method-p"> {{ method.recipe_method }}</p>
                     </div>
                 </a>
             </div>

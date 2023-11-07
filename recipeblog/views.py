@@ -95,9 +95,25 @@ def recipe_like(request, slug, *args, **kwargs):
     return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
 
 
-# def CategoryList(request):
-#     queryset = RecipeCategory.objects.all()
-#     context = {
-#         'queryset': queryset
-#     }
-#     return render(request, "home.html", context)
+class RecipeCatListView(generic.ListView):
+    template_name = 'recipes_category.html'
+    context_object_name = 'catlist'
+
+    def get_queryset(self):
+        content = {
+            'cat': self.kwargs['category'],
+            'recipes': Recipe.objects.filter(category__food_type=self.kwargs['category'])
+        }
+        return content
+
+
+class RecipeMethodListView(generic.ListView):
+    template_name = 'recipes_method.html'
+    context_object_name = 'methodlist'
+
+    def get_queryset(self):
+        content = {
+            'method': self.kwargs['method'],
+            'recipes': Recipe.objects.filter(method__recipe_method=self.kwargs['method'])
+        }
+        return content
