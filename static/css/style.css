@@ -404,6 +404,19 @@ body {
     margin: 4px;
 }
 
+.cat-heading {
+    text-align: center;
+}
+
+.cat-h-p {
+    font-size: 25px;
+}
+
+.cat-h1 {
+    display: inline;
+}
+
+
 @media screen and (max-width: 557px) {
     .logo-display {
         display: none;
