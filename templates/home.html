@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="row ">
-        {% for recipe in recipe_list %}
+        {% for recipe in model.recipe_list %}
         <div class="card-margin col-12 col-sm-6 col-lg-3 ">
             <div class="image-container img-thumbnail-margin">
                 {% if "placeholder" in recipe.featured_image.url %}
@@ -55,15 +55,40 @@
 
 <hr>
 
-<div class="container">
-    <div class="row ">
-        <div class="card-margin col-12 col-sm-6 col-lg-3 ">
-            <a href="#">
-                <img class="try-div-img" src="/static/image/Category/Rice.jpg" alt="">
-                <p>{{ categories_list }}</p>
-            </a>
-        </div>
-    </div>
+<div class="category-container">
+    <ul class="list-group list-group-horizontal ">
+        {% for category in model.category_list %}
+        <li class="list-group-item flex-list-item ">
+            <div class="categories ">
+                <a class="fontH cat-p" href="#">
+                    <img src="/static/image/Category/{{ category }}.jpg" alt="">
+                    <div class="image-flash-cat">
+                        <p class="padding"> {{ category }}</p>
+                    </div>
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<hr>
+
+<div class="category-container">
+    <ul class="list-group list-group-horizontal ">
+        {% for method in model.method_list %}
+        <li class="list-group-item flex-list-item ">
+            <div class="categories ">
+                <a class="fontH cat-p" href="#">
+                    <img src="/static/image/Method/{{ method }}.jpg" alt="">
+                    <div class="image-flash-cat">
+                        <p class="padding"> {{ method }}</p>
+                    </div>
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 
 

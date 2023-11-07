@@ -4,6 +4,12 @@ body {
     background-color: #f4f3ee;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
 .padding {
     padding: 10px;
 }
@@ -196,8 +202,8 @@ body {
 }
 
 .recipe-info {
-   width: 100%;
-   height: auto;
+    width: 100%;
+    height: auto;
 }
 
 .recipe-detail-img {
@@ -227,10 +233,13 @@ body {
     }
 }
 
-.all_details, .comment-bg {
+.all_details,
+.comment-bg {
     background-color: rgb(230, 190, 174, 0.8);
 }
-#ingredients, .comments {
+
+#ingredients,
+.comments {
     text-decoration: underline;
 }
 
@@ -258,40 +267,6 @@ body {
     background-color: #f4f3ee;
     color: #df835e;
     font-weight: bold;
-}
-
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
-
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
 }
 
 .post-link {
@@ -371,18 +346,59 @@ body {
 /* end */
 
 
-.try {
-    height: 400px;
-    width: 90%;
-    background-color: #3a3a3a;
+.category-container {
+    height: auto;
+    width: 100%;
+    display: flex;
+    overflow: auto;
     margin: auto;
-    overflow: scroll;
-    overflow-y: hidden;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-grow: 2;
 }
 
-.try-div-img {
-    width: 300px;
+.categories {
+    width: 220px;
     height: 350px;
+    background-color: transparent;
+    position: relative;
+}
+
+
+.flex-list-item {
+    flex: 0 0 auto;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border: 0;
+}
+
+
+.categories img {
+    width: 100%;
+    height: 80%;
+    border: 5px solid #f4f3ee;
+    object-fit: cover;
+}
+
+.image-flash-cat {
+    position: absolute;
+    bottom: 15%;
+    min-width: 30%;
+    left: 80px;
+    background-color: #E6BEAE;
+    color: #fff;
+}
+
+.cat-p {
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.padding {
+    padding-bottom: 0;
 }
 
 @media screen and (max-width: 557px) {

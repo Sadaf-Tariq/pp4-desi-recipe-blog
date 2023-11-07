@@ -1,17 +1,31 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
-from .models import Recipe, Rating, Comment, RecipeCategory
+from .models import Recipe, Rating, Comment, RecipeCategory, RecipeMethod
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import CommentForm
 
 
+# class RecipeList(generic.ListView):
+
+#     model = Recipe
+#     queryset = Recipe.objects.all().order_by('-created_on')
+#     template_name = "home.html"
+#     paginated_by = 6
+
 class RecipeList(generic.ListView):
 
-    model = Recipe
-    queryset = Recipe.objects.all().order_by('-created_on')
+    context_object_name = "model"
     template_name = "home.html"
     paginated_by = 6
+
+    def get_queryset(self):
+        myset = {
+            "recipe_list": Recipe.objects.all(),
+            "category_list": RecipeCategory.objects.all(),
+            "method_list": RecipeMethod.objects.all(),
+        }
+        return myset
 
 
 def full_recipe(request, slug, *args, **kwargs):
