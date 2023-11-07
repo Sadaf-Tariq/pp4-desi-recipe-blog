@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
+from django.views.generic.edit import CreateView
 from .models import Recipe, Rating, Comment, RecipeCategory, RecipeMethod
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .forms import CommentForm
+from .forms import CommentForm, RecipeForm
 
 
 # class RecipeList(generic.ListView):
@@ -117,3 +118,10 @@ class RecipeMethodListView(generic.ListView):
             'recipes': Recipe.objects.filter(method__recipe_method=self.kwargs['method'])
         }
         return content
+
+
+class CreateNewRecipe(CreateView):
+    model = Recipe
+    template_name = "create_new_recipe.html"
+    form_class = RecipeForm
+    
