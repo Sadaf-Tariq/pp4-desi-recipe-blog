@@ -59,11 +59,11 @@
     <ul class="list-group list-group-horizontal ">
         {% for category in model.category_list %}
         <li class="list-group-item flex-list-item ">
-            <div class="categories ">
-                <a class="fontH cat-p" href="#">
+            <div class="categories-methods">
+                <a class="cat-text-decor" href="#">
                     <img src="/static/image/Category/{{ category }}.jpg" alt="">
                     <div class="image-flash-cat">
-                        <p class="padding"> {{ category }}</p>
+                        <p class="fontH cat-p"> {{ category }}</p>
                     </div>
                 </a>
             </div>
@@ -74,15 +74,15 @@
 
 <hr>
 
-<div class="container category-container">
+<div class="container method-container">
     <ul class="list-group list-group-horizontal ">
         {% for method in model.method_list %}
         <li class="list-group-item flex-list-item ">
-            <div class="categories ">
-                <a class="fontH cat-p" href="#">
+            <div class="categories-methods">
+                <a class="method-text-decor" href="#">
                     <img src="/static/image/Method/{{ method }}.jpg" alt="">
-                    <div class="image-flash-cat">
-                        <p class="padding"> {{ method }}</p>
+                    <div class="image-flash-method">
+                        <p class="fontH method-p"> {{ method }}</p>
                     </div>
                 </a>
             </div>
