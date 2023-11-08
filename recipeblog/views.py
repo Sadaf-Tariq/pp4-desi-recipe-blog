@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recipe, Rating, Comment, RecipeCategory, RecipeMethod
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -125,12 +125,33 @@ class CreateNewRecipe(CreateView):
     model = Recipe
     template_name = "create_new_recipe.html"
     form_class = RecipeForm
-    success_url = reverse_lazy('new_recipe')
+    # success_url = reverse_lazy('new_recipe')
+
+    def get_success_url(self):
+        URL = self.request.path_info
+        return HttpResponseRedirect(URL)
 
     def form_valid(self, form):
         obj = form.save(commit=False)
         form.instance.author_email = self.request.user
-        success_message = "Your recipe has been posted successfully."
-        messages.add_message(self.request, messages.SUCCESS, success_message)
+        messages.add_message(self.request, messages.SUCCESS,
+                             "Your recipe has been added successfully.")
         obj.save()
+        return super().form_valid(form)
+
+
+class EditRecipe(UpdateView):
+    model = Recipe
+    template_name = "edit_recipe.html"
+    form_class = RecipeForm
+    success_url = reverse_lazy('home')
+
+    # def get_success_url(self):
+    #     URL = self.request.path_info
+    #     return HttpResponseRedirect(URL)
+        
+    def form_valid(self, form):
+        form.instance.author_email = self.request.user
+        messages.add_message(self.request, messages.SUCCESS,
+                             "Your recipe has been updated successfully.")
         return super().form_valid(form)
