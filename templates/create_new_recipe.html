@@ -2,7 +2,8 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content%}
-<div class="container form align-items-center">
+
+<!-- <div class="container form align-items-center">
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
             <form action="{% url 'new_recipe' %}" method="POST" enctype="multipart/form-data">
@@ -18,6 +19,20 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-2">
+            <form action="{% url 'new_recipe' %}" method="POST" enctype="multipart/form-data">
+                <div>
+                    {{ form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Add</button>
+                    <a href="{% url 'new_recipe' %}" class="btn btn-danger btn-lg">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

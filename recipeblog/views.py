@@ -5,6 +5,7 @@ from .models import Recipe, Rating, Comment, RecipeCategory, RecipeMethod
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .forms import CommentForm, RecipeForm
+from django.urls import reverse_lazy
 
 
 # class RecipeList(generic.ListView):
@@ -124,4 +125,12 @@ class CreateNewRecipe(CreateView):
     model = Recipe
     template_name = "create_new_recipe.html"
     form_class = RecipeForm
-    
+    success_url = reverse_lazy('new_recipe')
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        form.instance.author_email = self.request.user
+        success_message = "Your recipe has been posted successfully."
+        messages.add_message(self.request, messages.SUCCESS, success_message)
+        obj.save()
+        return super().form_valid(form)
