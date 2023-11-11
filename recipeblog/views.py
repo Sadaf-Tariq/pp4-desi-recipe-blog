@@ -139,7 +139,7 @@ class FullRecipe(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
-        comments = recipe.comments.filter(approved=True).order_by("-created_on")
+        comments = recipe.comments.all().order_by("-created_on")
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -164,7 +164,7 @@ class FullRecipe(View):
 
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
-        comments = recipe.comments.filter(approved=True).order_by("-created_on") 
+        comments = recipe.comments.all().order_by("-created_on")
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -175,7 +175,7 @@ class FullRecipe(View):
         if 'rating_hidden_field' in self.request.POST:
             rating_form = RatingForm(data=request.POST)
             if rating_form.is_valid():
-                counts = recipe.comments.filter(approved=False, email=request.user, recipe=recipe).count() 
+                counts = recipe.comments.filter(email=request.user, recipe=recipe).count() 
                 if counts > 0:
                     self.commented = True
                 rating_form.instance.user_id = request.user.id
@@ -188,7 +188,7 @@ class FullRecipe(View):
                 rating.save()
                 # return redirect('post_detail', post.slug)
             else:
-                counts = recipe.comments.filter(approved=False, email=request.user, recipe=recipe).count() 
+                counts = recipe.comments.filter(email=request.user, recipe=recipe).count() 
                 if counts > 0:
                     self.commented = True
 
