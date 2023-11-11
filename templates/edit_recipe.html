@@ -6,13 +6,13 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6 offset-lg-2">
+        <div class="col-lg-6 offset-lg-2 background-image">
             <form  method="POST" enctype="multipart/form-data">
                 <div>
                     {{ form | crispy }}
                     {% csrf_token %}
                     <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Edit</button>
-                    <a href="{% url 'new_recipe' %}" class="btn btn-danger btn-lg">Cancel</a>
+                    <a href="{% url 'home' %}" class="btn btn-danger btn-lg">Cancel</a>
                 </div>
             </form>
         </div>

@@ -42,6 +42,7 @@ body {
 .background {
     background-color: #efddd7;
 }
+
 .logo-text {
     font-weight: Bold;
     font-size: xxx-large;
@@ -85,11 +86,20 @@ body {
     height: auto;
 }
 
-/* #background-image {
-    background-image: url("/static/image/background.jpg") ;
+.background-image, .background-image-delete {
+    background-image: url("/static/image/background-old.jpg") ;
     background-size: cover;
-} */
+    margin: auto;
+}
 
+.background-image-delete {
+    height: 500px;
+    
+}
+
+.delete-p {
+    margin-top: 180px;
+}
 /* Recipe detail */
 
 /* copy frm pp4 */
@@ -289,6 +299,14 @@ body {
 }
 
 #submitButton {
+    background-color: #df835e;
+}
+
+#submitButtonEdit {
+    background-color: #df835e;
+}
+
+#submitButtonCancel {
     background-color: #df835e;
 }
 
@@ -531,6 +549,8 @@ body {
     line-height: 0;   /* within paragraph */
     margin-bottom: 0;
   }
+
+
 @media screen and (max-width: 1200px) {
     .child {
         width: 200px;
