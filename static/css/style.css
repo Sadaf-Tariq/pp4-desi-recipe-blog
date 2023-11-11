@@ -4,6 +4,10 @@ body {
     background-color: #f4f3ee;
 }
 
+.bg {
+    background-color: #3a3a3a;;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -26,10 +30,18 @@ body {
     font-family: 'Hind Siliguri', sans-serif;
 }
 
+.fontD {
+    font-family: 'Great Vibes', sans-serif;
+}
+
+
 .font-size {
     font-size: 130%;
 }
 
+.background {
+    background-color: #efddd7;
+}
 .logo-text {
     font-weight: Bold;
     font-size: xxx-large;
@@ -73,10 +85,10 @@ body {
     height: auto;
 }
 
-#background-image {
+/* #background-image {
     background-image: url("/static/image/background.jpg") ;
     background-size: cover;
-}
+} */
 
 /* Recipe detail */
 
@@ -222,6 +234,23 @@ body {
     animation-name: hero-image-animation;
     animation-duration: 10s;
 }
+
+.recipes-card {
+    height: 600px; 
+    padding: 5px;
+}
+
+.recipe-info {
+    width: 100%;
+    height: 200px;
+    border: 2px solid #fff;
+    background-color: #fff;
+}
+
+.recipe-info-text {
+    text-align: canter;
+}
+
 
 @keyframes hero-image-animation {
     40% {
@@ -498,6 +527,18 @@ body {
     left: 0;
   }
 
+  .lh {
+    line-height: 0;   /* within paragraph */
+    margin-bottom: 0;
+  }
+@media screen and (max-width: 1200px) {
+    .child {
+        width: 200px;
+        height: 300px;
+        margin-right: 35px;
+     }
+}
+
 @media screen and (max-width: 557px) {
     .logo-display {
         display: none;
@@ -508,4 +549,12 @@ body {
         font-size: xx-large;
         letter-spacing: 3px;
     }
+}
+
+@media screen and (max-width: 340px) {
+    .child {
+        width: 180px;
+        height: 280px;
+        margin-right: 35px;
+     }
 }

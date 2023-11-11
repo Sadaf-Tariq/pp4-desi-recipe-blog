@@ -8,14 +8,8 @@ from .forms import CommentForm, RecipeForm, RatingForm
 from django.urls import reverse_lazy
 
 
-# class RecipeList(generic.ListView):
 
-#     model = Recipe
-#     queryset = Recipe.objects.all().order_by('-created_on')
-#     template_name = "home.html"
-#     paginated_by = 6
-
-class RecipeList(generic.ListView):
+class HomeView(generic.ListView):
 
     context_object_name = "model"
     template_name = "home.html"
@@ -28,6 +22,15 @@ class RecipeList(generic.ListView):
             "method_list": RecipeMethod.objects.all(),
         }
         return myset
+
+class RecipeList(generic.ListView):
+    """
+    Renders all objects of Recipe model as a list
+    """
+    model = Recipe
+    queryset = Recipe.objects.order_by("-created_on")
+    template_name = "all_recipes.html"
+    paginate_by = 8
 
 
 # def full_recipe(request, slug, *args, **kwargs):
