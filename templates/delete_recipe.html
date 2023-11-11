@@ -11,6 +11,7 @@
                 {% csrf_token %}
                 <p>Are you sure you want to delete "{{ recipe.title }}"?</p>
                 <input type="submit" value="Confirm">
+                <a href="{% url 'home' %}" class="btn btn-danger btn-lg">Cancel</a>
             </form>
         </div>
     </div>

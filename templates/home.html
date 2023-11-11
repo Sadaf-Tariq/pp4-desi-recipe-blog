@@ -85,30 +85,22 @@
         </li>
         {% endfor %}
     </ul>
-</div> -->
+</div> 
+ -->
 
-
-<div class="menu-wrapper">
-	<ul class="menu">
+ <div class="cover">
+    <button class="left arrows" onclick="rightScroll()"><i class="fa-solid fa-arrow-left"></i></button>
+   <div class="scroll-imagesCat">
         {% for category in model.category_list %}
-        <li class="item">
-                <!-- <a  href="/category/{{ category }}">
-                    <img src="/static/image/Category/{{ category }}.jpg" alt="">
-                </a> -->
-                {{ category }}
-        </li>
+        <div class="child">
+            <a class="cat-text-decor" href="/category/{{ category }}">
+                <img src="/static/image/Category/{{ category }}.jpg" alt="">
+                    <p class="fontH cat-p"> {{ category.food_type }}</p>
+            </a>
+        </div>
         {% endfor %}
-    </ul>
-
-	<div class="paddles">
-		<button class="left-paddle paddle hidden">
-			<
-		</button>
-		<button class="right-paddle paddle">
-			>
-		</button>
-	</div>
-
+   </div>
+   <button class="right arrows" onclick="leftScroll()"><i class="fa-solid fa-arrow-right"></i></button>
 </div>
 
 
@@ -122,6 +114,22 @@
 </div>
 
 
+<div class="cover">
+    <button class="left arrows" onclick="rightScrollM()"><i class="fa-solid fa-arrow-left"></i></button>
+   <div class="scroll-imagesMethod">
+        {% for method in model.method_list %}
+        <div class="child">
+            <a class="cat-text-decor" href="/category/{{ method }}">
+                <img src="/static/image/Method/{{ method }}.jpg" alt="">
+                    <p class="fontH cat-p"> {{ method.recipe_method }}</p>
+            </a>
+        </div>
+        {% endfor %}
+   </div>
+   <button class="right arrows" onclick="leftScrollM()"><i class="fa-solid fa-arrow-right"></i></button>
+</div>
+
+<!-- 
 <div class="container method-container">
     <ul class="list-group list-group-horizontal ">
         {% for method in model.method_list %}
@@ -137,7 +145,7 @@
         </li>
         {% endfor %}
     </ul>
-</div>
+</div> -->
 
 
 <!-- <div class="overflow-x-scroll lg:overflow-x-auto py-4">

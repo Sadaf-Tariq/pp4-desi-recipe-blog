@@ -261,11 +261,7 @@ class CreateNewRecipe(CreateView):
     model = Recipe
     template_name = "create_new_recipe.html"
     form_class = RecipeForm
-    # success_url = reverse_lazy('new_recipe')
-
-    def get_success_url(self):
-        URL = self.request.path_info
-        return HttpResponseRedirect(URL)
+    success_url = reverse_lazy('new_recipe')
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -273,7 +269,7 @@ class CreateNewRecipe(CreateView):
         messages.add_message(self.request, messages.SUCCESS,
                              "Your recipe has been added successfully.")
         obj.save()
-        return HttpResponseRedirect(self.get_success_url())
+        return super().form_valid(form)
 
 class EditRecipe(UpdateView):
     model = Recipe
@@ -293,7 +289,7 @@ class EditRecipe(UpdateView):
 
 class DeleteRecipe(DeleteView):
     model = Recipe
-    template_name = "edit_recipe.html"
+    template_name = "delete_recipe.html"
     form_class = RecipeForm
     success_url = reverse_lazy('home')
 
