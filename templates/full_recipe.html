@@ -107,6 +107,7 @@
     <div>
     {% if user.is_authenticated and user == recipe.author_email %}
         <a href="{% url 'edit_recipe' recipe.slug %}" id="edit-button" class="btn links">Edit</a>
+        <a href="{% url 'delete_recipe' recipe.slug %}" id="edit-button" class="btn links">Delete your recipe.</a>
     {% endif %}
     </div>
 

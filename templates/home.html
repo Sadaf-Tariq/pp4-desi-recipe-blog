@@ -69,7 +69,8 @@
     </p>
 </div>
 
-<div class="container category-container">
+
+<!-- <div class="container category-container">
     <ul class="list-group list-group-horizontal ">
         {% for category in model.category_list %}
         <li class="list-group-item flex-list-item ">
@@ -84,7 +85,32 @@
         </li>
         {% endfor %}
     </ul>
+</div> -->
+
+
+<div class="menu-wrapper">
+	<ul class="menu">
+        {% for category in model.category_list %}
+        <li class="item">
+                <!-- <a  href="/category/{{ category }}">
+                    <img src="/static/image/Category/{{ category }}.jpg" alt="">
+                </a> -->
+                {{ category }}
+        </li>
+        {% endfor %}
+    </ul>
+
+	<div class="paddles">
+		<button class="left-paddle paddle hidden">
+			<
+		</button>
+		<button class="right-paddle paddle">
+			>
+		</button>
+	</div>
+
 </div>
+
 
 <hr>
 

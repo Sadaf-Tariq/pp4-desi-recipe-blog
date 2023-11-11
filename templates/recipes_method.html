@@ -12,11 +12,61 @@
 
 
 <div class="container">
-    <div class="row">
+    <div class="row ">
         <div class="col-12 mt-5">
             <h1> Here is a list of recipes in the <strong>{{ methodlist.method }}</strong> category:</h1>
         </div>
         {% for recipe in methodlist.recipes %}
+        <div class="card-margin col-12 col-sm-6 col-lg-3 ">
+            <div class="image-container img-thumbnail-margin">
+                {% if "placeholder" in recipe.featured_image.url %}
+                <img class="img-thumbnail"
+                    src="https://res.cloudinary.com/dvbuzkqgj/image/upload/v1699226293/zxgxa4fieerchccyk8em.jpg"
+                    alt="placeholder image">
+                {% else %}
+                <img class="img-thumbnail" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
+                {% endif %}
+                <a href="{% url 'full_recipe' recipe.slug %}" class="post-link">
+                    <div class="image-flash-title">
+                        <p class="author fontH">{{ recipe.title }}</p>
+                    </div>
+                </a>
+                <div class="image-flash">
+                    <p class="author fontH">Author: {{ recipe.author_name }}</p>
+                </div>
+
+                <p class="card-text fontM"><strong>Avg Rating:
+                    <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"> </span>
+                    <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}" ></span>
+                    <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
+                  {{ recipe.average_rating }}/5.0 </strong><p>
+                
+                <p><strong class="card-text fontM">
+                        Likes:
+                        {{ recipe.number_of_likes }} <i class="far fa-heart"></i> |
+                        Comments:
+                        {{ recipe.number_of_comments}} <i class="fa-regular fa-comment"></i> </strong>
+                </p>
+
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 %}
+    </div>
+    <div class="row">
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-12 mt-5">
+            <h1> Here is a list of recipes in the <strong>{{ catlist.cat }}</strong> category:</h1>
+        </div>
+        {% for recipe in catlist.recipes %}
         <div class="recipes col-12 col-sm-6 col-lg-3">
             <div class="card recipe-card mb-3 h-100">
                 {% if "placeholder" in recipe.featured_image.url %}
@@ -40,7 +90,10 @@
         </p>
         {% endfor %}
     </div>
-</div>
+</div> -->
+
+
+
 <div class="container text-center">
     <div class="row">
         <div class="col align-self-center">

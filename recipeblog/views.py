@@ -273,10 +273,25 @@ class CreateNewRecipe(CreateView):
         messages.add_message(self.request, messages.SUCCESS,
                              "Your recipe has been added successfully.")
         obj.save()
-        return super().form_valid(form)
-
+        return HttpResponseRedirect(self.get_success_url())
 
 class EditRecipe(UpdateView):
+    model = Recipe
+    template_name = "edit_recipe.html"
+    form_class = RecipeForm
+    success_url = reverse_lazy('home')
+
+    # def get_success_url(self):
+    #     URL = self.request.path_info
+    #     return HttpResponseRedirect(URL)
+        
+    def form_valid(self, form):
+        form.instance.author_email = self.request.user
+        messages.add_message(self.request, messages.SUCCESS,
+                             "Your recipe has been updated successfully.")
+        return super().form_valid(form)
+
+class DeleteRecipe(DeleteView):
     model = Recipe
     template_name = "edit_recipe.html"
     form_class = RecipeForm
