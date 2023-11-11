@@ -86,7 +86,7 @@ class Recipe(models.Model):
         return Rating.objects.filter(recipe_id=self).aggregate(Avg("rating"))["rating__avg"] or 0
 
     def number_of_comments(self):
-        return Comment.objects.filter(recipe_id=self).count()
+        return Comment.objects.filter(recipe_id=self, approved=True).count()
 
     def __str__(self):
         return f"{self.author_name} | {self.title}: {self.average_rating()} |Comments: {self.number_of_comments()}"

@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-sadaf-tariq-pp4-desi-rec-mf9nilybq5.us2.codeanyapp.com', 'pp4-desi-recipe-blog-04aed9a2aa93.herokuapp.com', 'localhost']
+    '8000-sadaftariq-pp4desirecip-l9u1j985k50.ws-eu106.gitpod.io', 'pp4-desi-recipe-blog-04aed9a2aa93.herokuapp.com', 'localhost']
 
 AUTH_USER_MODEL = "users.CustomUser"
 

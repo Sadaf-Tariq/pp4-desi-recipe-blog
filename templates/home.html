@@ -22,7 +22,15 @@
                     <p class="author fontH">Author: {{ recipe.author_name }}</p>
                 </div>
 
-                <p><strong class="card-text fontM">Rating: {{ recipe.average_rating }}/5.0 <i class="far fa-star"></i> |
+                <p class="card-text fontM"><strong>Avg Rating:
+                    <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"> </span>
+                    <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
+                    <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}" ></span>
+                    <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
+                  {{ recipe.average_rating }}/5.0 </strong><p>
+                
+                <p><strong class="card-text fontM">
                         Likes:
                         {{ recipe.number_of_likes }} <i class="far fa-heart"></i> |
                         Comments:

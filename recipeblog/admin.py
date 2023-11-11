@@ -23,7 +23,9 @@ class CommentAdmin(admin.ModelAdmin):
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
 
+@admin.register(Rating)
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ('user', 'recipe', 'rating')
 
 admin.site.register(RecipeMethod)
 admin.site.register(RecipeCategory)
-admin.site.register(Rating)

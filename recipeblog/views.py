@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views import generic
+from django.views import generic, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recipe, Rating, Comment, RecipeCategory, RecipeMethod
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .forms import CommentForm, RecipeForm
+from .forms import CommentForm, RecipeForm, RatingForm
 from django.urls import reverse_lazy
 
 
@@ -30,54 +30,190 @@ class RecipeList(generic.ListView):
         return myset
 
 
-def full_recipe(request, slug, *args, **kwargs):
-    """
-    A function-based view to view the detail of a post.
-    Largely the same as the class-based, but we don't have
-    different methods for GET and POST. Because it's not a
-    class, all of the extra "self" stuff is removed too.
+# def full_recipe(request, slug, *args, **kwargs):
+#     """
+#     A function-based view to view the detail of a post.
+#     Largely the same as the class-based, but we don't have
+#     different methods for GET and POST. Because it's not a
+#     class, all of the extra "self" stuff is removed too.
 
-    Functionally, it's the same, but it is a bit clearer
-    what's going on. To differentiate between request methods,
-    we use request.method == "GET" or request.method == "POST"
-    """
+#     Functionally, it's the same, but it is a bit clearer
+#     what's going on. To differentiate between request methods,
+#     we use request.method == "GET" or request.method == "POST"
+#     """
 
-    queryset = Recipe.objects.all()
-    recipe = get_object_or_404(queryset, slug=slug)
-    comments = recipe.comments.all().order_by("-created_on")
-    comment_count = recipe.comments.filter(approved=True).count()
-    liked = False
+#     queryset = Recipe.objects.all()
+#     recipe = get_object_or_404(queryset, slug=slug)
+#     comments = recipe.comments.all().order_by("-created_on")
+#     comment_count = recipe.comments.filter(approved=True).count()
+#     liked = False
+#     commented = False
+
+#     if recipe.likes.filter(id=request.user.id).exists():
+#         liked = True
+
+#     if request.method == "POST":
+#         comment_form = CommentForm(data=request.POST)
+#         if comment_form.is_valid():
+#             comment_form.instance.email = request.user.email
+#             # comment_form.instance.name = request.user.username
+#             comment = comment_form.save(commit=False)
+#             comment.recipe = recipe
+#             comment.save()
+#             messages.add_message(request, messages.SUCCESS,
+#                                  'Comment pending approval!')
+#         else:
+#             comment_form = CommentForm()
+#     else:
+#         comment_form = CommentForm()
+
+#     return render(
+#         request,
+#         "full_recipe.html",
+#         {
+#             "recipe": recipe,
+#             "comments": comments,
+#             "comment_count": comment_count,
+#             "liked": liked,
+#             "comment_form": comment_form
+#         },
+#     )
+
+# def full_recipe(request, slug, *args, **kwargs):
+#     """
+#     A function-based view to view the detail of a post.
+#     Largely the same as the class-based, but we don't have
+#     different methods for GET and POST. Because it's not a
+#     class, all of the extra "self" stuff is removed too.
+
+#     Functionally, it's the same, but it is a bit clearer
+#     what's going on. To differentiate between request methods,
+#     we use request.method == "GET" or request.method == "POST"
+#     """
+
+#     queryset = Recipe.objects.all()
+#     recipe = get_object_or_404(queryset, slug=slug)
+#     comments = recipe.comments.all().order_by("-created_on")
+#     comment_count = recipe.comments.filter(approved=True).count()
+#     liked = False
+#     commented = False
+
+#     if recipe.likes.filter(id=request.user.id).exists():
+#         liked = True
+
+#     if request.method == "POST":
+#         comment_form = CommentForm(data=request.POST)
+#         if comment_form.is_valid():
+#             comment_form.instance.email = request.user.email
+#             # comment_form.instance.name = request.user.username
+#             comment = comment_form.save(commit=False)
+#             comment.recipe = recipe
+#             comment.save()
+#             messages.add_message(request, messages.SUCCESS,
+#                                  'Comment pending approval!')
+#         else:
+#             comment_form = CommentForm()
+#     else:
+#         comment_form = CommentForm()
+
+#     return render(
+#         request,
+#         "full_recipe.html",
+#         {
+#             "recipe": recipe,
+#             "comments": comments,
+#             "comment_count": comment_count,
+#             "liked": liked,
+#             "comment_form": comment_form
+#         },
+#     )
+
+
+class FullRecipe(View):
+
     commented = False
 
-    if recipe.likes.filter(id=request.user.id).exists():
-        liked = True
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Recipe.objects.all()
+        recipe = get_object_or_404(queryset, slug=slug)
+        comments = recipe.comments.filter(approved=True).order_by("-created_on")
+        liked = False
+        if recipe.likes.filter(id=self.request.user.id).exists():
+            liked = True
 
-    if request.method == "POST":
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment_form.instance.email = request.user.email
-            # comment_form.instance.name = request.user.username
-            comment = comment_form.save(commit=False)
-            comment.recipe = recipe
-            comment.save()
-            messages.add_message(request, messages.SUCCESS,
-                                 'Comment pending approval!')
-        else:
-            comment_form = CommentForm()
-    else:
+    
+        return render(
+            request,
+            "full_recipe.html",
+            {
+                "recipe": recipe,
+                "comments": comments,
+                "commented": self.commented,
+                "liked": liked,
+                "comment_form": CommentForm(),
+                "rating_form": RatingForm(),
+            },
+        )
+
+    
+    def post(self, request, slug, *args, **kwargs, ):
+
+
+        queryset = Recipe.objects.all()
+        recipe = get_object_or_404(queryset, slug=slug)
+        comments = recipe.comments.filter(approved=True).order_by("-created_on") 
+        liked = False
+        if recipe.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        
+        rating_form = RatingForm()
         comment_form = CommentForm()
 
-    return render(
-        request,
-        "full_recipe.html",
-        {
-            "recipe": recipe,
-            "comments": comments,
-            "comment_count": comment_count,
-            "liked": liked,
-            "comment_form": comment_form
-        },
-    )
+        if 'rating_hidden_field' in self.request.POST:
+            rating_form = RatingForm(data=request.POST)
+            if rating_form.is_valid():
+                counts = recipe.comments.filter(approved=False, email=request.user, recipe=recipe).count() 
+                if counts > 0:
+                    self.commented = True
+                rating_form.instance.user_id = request.user.id
+                reviewCheck = Rating.objects.filter(user=request.user, recipe=recipe).count()
+                if request.user.is_authenticated:
+                    if reviewCheck > 0:
+                        Rating.objects.filter(recipe=recipe, user=request.user).first().delete() 
+                rating = rating_form.save(commit=False)
+                rating.recipe = recipe
+                rating.save()
+                # return redirect('post_detail', post.slug)
+            else:
+                counts = recipe.comments.filter(approved=False, email=request.user, recipe=recipe).count() 
+                if counts > 0:
+                    self.commented = True
+
+            
+
+        if 'comment_hidden_field' in self.request.POST:
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+                self.commented = True
+                comment_form.instance.email = request.user.email
+                comment = comment_form.save(commit=False)
+                comment.recipe = recipe
+                comment.save()
+                # return redirect('post_detail', post.slug)
+
+
+        return render(
+            request,
+            "full_recipe.html",
+            {
+                "recipe": recipe,
+                "comments": comments,
+                "commented": self.commented,
+                "rating_form": rating_form,
+                "comment_form": comment_form,
+                "liked": liked,
+            }
+        )
 
 
 def recipe_like(request, slug, *args, **kwargs):
