@@ -11,13 +11,14 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container container-height">
     <div class="row ">
         <div class="col-12 mt-5">
             <h1> Here is a list of recipes in the <strong>{{ methodlist.method }}</strong> category:</h1>
         </div>
         {% for recipe in methodlist.recipes %}
-        <div class="card-margin col-12 col-sm-6 col-lg-3 ">
+        <div class="recipes-card card-margin col-12 col-sm-6 col-lg-3 opacity">
+            <a href="{% url 'full_recipe' recipe.slug %}">
             <div class="image-container img-thumbnail-margin">
                 {% if "placeholder" in recipe.featured_image.url %}
                 <img class="img-thumbnail"
@@ -34,21 +35,27 @@
                 <div class="image-flash">
                     <p class="author fontH">Author: {{ recipe.author_name }}</p>
                 </div>
-
-                <p class="card-text fontM"><strong>Avg Rating:
-                    <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"> </span>
-                    <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}" ></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
-                  {{ recipe.average_rating }}/5.0 </strong><p>
                 
-                <p><strong class="card-text fontM">
-                        Likes:
-                        {{ recipe.number_of_likes }} <i class="far fa-heart"></i> |
-                        Comments:
-                        {{ recipe.number_of_comments}} <i class="fa-regular fa-comment"></i> </strong>
-                </p>
+                <div class="recipes-info">
+
+                    <p class="card-text fontM text-center"><strong>Avg Rating:
+                        <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"> </span>
+                        <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
+                        <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
+                        <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}" ></span>
+                        <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
+                      {{ recipe.average_rating }}/5.0 </strong><p>
+
+
+                    <p class="fontH text-center "><i class="fa-solid fa-user-clock"></i>
+                        Prep Time: {{ recipe.prep_time }} min - <i class="fa-solid fa-clock"></i>
+                        Cook Time: {{ recipe.cooking_time }} min</p>
+                        <p class="fontH text-center "><i class="fa-solid fa-spoon"></i> Method: {{ recipe.method }}
+                          - <i class="fa-solid fa-bowl-food"></i> Category: {{recipe.category }}</p>
+
+                    <p class="fontH text-center"><i class="fa-solid fa-utensils"></i> Servings: {{ recipe.servings }}</p>
+                </a>
+                </div>
 
             </div>
         </div>
@@ -59,45 +66,30 @@
         {% endfor %}
 
     </div>
+
+
+<div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+        {% endif %}
+    </ul>
+    </nav>
+    {% endif %}
 </div>
 
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-12 mt-5">
-            <h1> Here is a list of recipes in the <strong>{{ catlist.cat }}</strong> category:</h1>
-        </div>
-        {% for recipe in catlist.recipes %}
-        <div class="recipes col-12 col-sm-6 col-lg-3">
-            <div class="card recipe-card mb-3 h-100">
-                {% if "placeholder" in recipe.featured_image.url %}
-                <img src="https://res.cloudinary.com/dx0imlozl/image/upload/v1698078234/photo-1554998171-706e730d721d_1_kwyte4.avif"
-                    class="card-img-top" alt="the default food image">
-                {% else %}
-                <img class="card-img-top" src="{{ recipe.featured_image.url }}" alt="image of the recipe">
-                {% endif %}
-                <div class="card-body">
-                    <h2 class="card-title">{{ recipe.title }}</h2>
-                    <p class="card-text">{{ recipe.created_on }}</p>
-                    <p><i class="fa-solid fa-utensils"></i> {{ recipe.category }}</p>
-                    <p><strong class="card-text"><i class="fa-regular fa-clock"></i> {{ recipe.cook_time }}
-                            min</strong></p>
-                    <a href="{% url 'full_recipe' recipe.slug %}" class="btn view">View Recipe</a>
-                </div>
-            </div>
-        </div>
-        {% empty %}
-        <p class="mt-4">There are no recipes in this category yet. Do you want to be the first to share something here?
-        </p>
-        {% endfor %}
-    </div>
-</div> -->
-
+</div>
 
 
 <div class="container text-center">
     <div class="row">
         <div class="col align-self-center">
-            <a class="btn btn-success btn-lg green links" href="{% url 'home' %}">Back</a>
+            <a class="btn submitButton mt-5 mb-5" href="{% url 'home' %}">Back</a>
         </div>
     </div>
 </div>
