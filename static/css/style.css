@@ -294,19 +294,13 @@ body {
     font-size: 18px;
 }
 
-#submitButton {
+.submitButton {
     background-color: #df835e;
+    color: white;
+    font-weight: bold;
 }
 
-#submitButtonEdit {
-    background-color: #df835e;
-}
-
-#submitButtonCancel {
-    background-color: #df835e;
-}
-
-#submitButton:hover {
+.submitButton:hover {
     background-color: #f4f3ee;
     color: #df835e;
     font-weight: bold;
@@ -550,6 +544,22 @@ body {
     margin-bottom: 0;
   }
 
+  .edit-delete-btn {
+    width: 100%;
+    text-align: center;
+  }
+ 
+  .rating-col {
+    width: 100;
+    height: auto;
+    background-color: #23BBBB;
+    text-align: center;
+  }
+
+  .form-li {
+    list-style-type: none; 
+    display : inline;
+    }
 
 @media screen and (max-width: 1200px) {
     .child {

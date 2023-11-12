@@ -11,5 +11,4 @@ urlpatterns = [
     path('like/<slug:slug>', views.recipe_like, name='recipe_like'),
     path('category/<category>/', views.RecipeCatListView.as_view(), name='category'),
     path('method/<method>/', views.RecipeMethodListView.as_view(), name='method'),
-   
 ]
