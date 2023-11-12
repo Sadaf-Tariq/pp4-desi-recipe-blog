@@ -554,7 +554,7 @@ body {
     background-color: #E6BEAE;
   }
 
-  .socialaccount_providers {
+  .socialaccount_providers { 
     overflow: hidden;
   }
 
@@ -566,7 +566,7 @@ body {
      }
 }
 
-@media screen and (max-width: 557px) {
+@media screen and (max-width: 575px) {
     .logo-display {
         display: none;
     }

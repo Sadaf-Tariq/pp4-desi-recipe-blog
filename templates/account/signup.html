@@ -4,25 +4,27 @@
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h3>{% trans "Sign Up" %}</h3>
+{% load crispy_forms_filters %}
 
-            <p>{% blocktrans %}Welcome back to the code|star blog. Do you already have an account? Then please <a
-                    class="link" href="{{ login_url }}">sign in</a> instead.{% endblocktrans %}</p>
+{% block content %}
+<div class="account-container pt-5 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-3 ">
+            <h1 class="fontM logo-text comments-underline text-center">{% trans "Sign Up" %}</h1>
+
+            <p class="fontH text-center mt-4">{% blocktrans %}Welcome back to the code|star blog. Do you already have an account? <br> Then please <a
+                    class="link" href="{{ login_url }}"><b class="fs-5 fontM text-dark fw-bold"> &nbspSign In&nbsp </b></a> instead.{% endblocktrans %}</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-8 col-8 mt-3 ">
             <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form | crispy }}
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
-                <button class="btn btn-signup right" type="submit">{% trans "Sign Up" %} &raquo;</button>
+                <button class="btn submitButton mt-3 w-100" type="submit">{% trans "Sign Up" %}</button>
             </form>
         </div>
     </div>
