@@ -4,7 +4,8 @@
 <div class="container container-height">
     <div class="row ">
         {% for recipe in recipe_list %}
-        <div class="recipes-card card-margin col-12 col-sm-6 col-lg-3 ">
+        <div class="recipes-card card-margin col-12 col-sm-6 col-lg-3 opacity">
+            <a href="{% url 'full_recipe' recipe.slug %}">
             <div class="image-container img-thumbnail-margin">
                 {% if "placeholder" in recipe.featured_image.url %}
                 <img class="img-thumbnail"
@@ -40,14 +41,7 @@
                           - <i class="fa-solid fa-bowl-food"></i> Category: {{recipe.category }}</p>
 
                     <p class="fontH text-center"><i class="fa-solid fa-utensils"></i> Servings: {{ recipe.servings }}</p>
-                    
-                    <!-- <p class="lh"><strong class="card-text fontM">
-                            Likes:
-                            {{ recipe.number_of_likes }} <i class="far fa-heart"></i> |
-                            Comments:
-                            {{ recipe.number_of_comments}} <i class="fa-regular fa-comment"></i> </strong>
-                    </p> -->
-
+                </a>
                 </div>
 
             </div>

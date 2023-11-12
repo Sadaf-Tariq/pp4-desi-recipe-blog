@@ -50,9 +50,10 @@
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
             <div class="d-grid">
-                <button class="primaryAction mt-3 btn submitButton" type="submit">{% trans "Sign In" %}</button><br>
-                <a class="button secondaryAction text-dark text-center" href="{% url 'account_reset_password' %}">
-                    <b class="fs-5 fontM  fw-bold"> &nbsp{% trans "Forgot Password?" %}&nbsp </b></a>
+                <button class="primaryAction mt-3 btn submitButton" type="submit">{% trans "Sign In" %}</button>
+                <!-- <br>
+                <a class="button secondaryAction tdarkext- text-center" href="{% url 'account_reset_password' %}">
+                    <b class="fs-5 fontM  fw-bold"> &nbsp{% trans "Forgot Password?" %}&nbsp </b></a> -->
             </div>
         </form>
     </div>

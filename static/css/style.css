@@ -558,6 +558,16 @@ body {
     overflow: hidden;
   }
 
+  .cat-title {
+    border: 2px solid #f4f3ee;
+    background-color: #f4f3ee;
+  }
+
+  .opacity:hover {
+    opacity: 0.5;
+  }
+
+
 @media screen and (max-width: 1200px) {
     .child {
         width: 200px;
@@ -580,6 +590,9 @@ body {
         width: 100%;
       }
     
+      .opacity:hover {
+        opacity: 1;
+      }
 }
 
 @media screen and (max-width: 340px) {

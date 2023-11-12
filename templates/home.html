@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row ">
         {% for recipe in model.recipe_list %}
-        <div class="card-margin col-12 col-sm-6 col-lg-3 ">
+        <div class="card-margin col-12 col-sm-6 col-lg-3 opacity">
+            <a href="{% url 'full_recipe' recipe.slug %}">
             <div class="image-container img-thumbnail-margin">
                 {% if "placeholder" in recipe.featured_image.url %}
                 <img class="img-thumbnail"
@@ -36,7 +37,7 @@
                         Comments:
                         {{ recipe.number_of_comments}} <i class="fa-regular fa-comment"></i> </strong>
                 </p>
-
+            </a>
             </div>
         </div>
         {% if forloop.counter|divisibleby:4 %}
@@ -44,7 +45,6 @@
     <div class="row">
         {% endif %}
         {% endfor %}
-
     </div>
 </div>
 
@@ -70,32 +70,14 @@
 </div>
 
 
-<!-- <div class="container category-container">
-    <ul class="list-group list-group-horizontal ">
-        {% for category in model.category_list %}
-        <li class="list-group-item flex-list-item ">
-            <div class="categories-methods">
-                <a class="cat-text-decor" href="/category/{{ category }}">
-                    <img src="/static/image/Category/{{ category }}.jpg" alt="">
-                    <div class="image-flash-cat">
-                        <p class="fontH cat-p"> {{ category.food_type }}</p>
-                    </div>
-                </a>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-</div> 
- -->
-
  <div class="cover">
     <button class="left arrows" onclick="rightScroll()"><i class="fa-solid fa-arrow-left"></i></button>
    <div class="scroll-imagesCat">
         {% for category in model.category_list %}
-        <div class="child">
+        <div class="child opacity">
             <a class="cat-text-decor" href="/category/{{ category }}">
                 <img src="/static/image/Category/{{ category }}.jpg" alt="">
-                    <p class="fontH cat-p"> {{ category.food_type }}</p>
+                    <div class="cat-title"><p class="fontM cat-p text-dark fw-bold"> {{ category.food_type }}</p></div>
             </a>
         </div>
         {% endfor %}
@@ -118,10 +100,10 @@
     <button class="left arrows" onclick="rightScrollM()"><i class="fa-solid fa-arrow-left"></i></button>
    <div class="scroll-imagesMethod">
         {% for method in model.method_list %}
-        <div class="child">
+        <div class="child opacity">
             <a class="cat-text-decor" href="/category/{{ method }}">
                 <img src="/static/image/Method/{{ method }}.jpg" alt="">
-                    <p class="fontH cat-p"> {{ method.recipe_method }}</p>
+                <div class="cat-title"><p class="fontM cat-p text-dark fw-bold"> {{ method.recipe_method }}</p></div>
             </a>
         </div>
         {% endfor %}
