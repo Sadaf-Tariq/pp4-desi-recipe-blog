@@ -143,6 +143,9 @@ class FullRecipe(View):
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
+        counts = recipe.comments.filter(recipe=recipe).count() 
+        if counts > 0:
+            self.commented = True
 
     
         return render(
@@ -175,7 +178,7 @@ class FullRecipe(View):
         if 'rating_hidden_field' in self.request.POST:
             rating_form = RatingForm(data=request.POST)
             if rating_form.is_valid():
-                counts = recipe.comments.filter(email=request.user, recipe=recipe).count() 
+                counts = recipe.comments.filter(recipe=recipe).count() 
                 if counts > 0:
                     self.commented = True
                 rating_form.instance.user_id = request.user.id
@@ -186,11 +189,14 @@ class FullRecipe(View):
                 rating = rating_form.save(commit=False)
                 rating.recipe = recipe
                 rating.save()
-                # return redirect('post_detail', post.slug)
+                return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
             else:
                 counts = recipe.comments.filter(email=request.user, recipe=recipe).count() 
                 if counts > 0:
                     self.commented = True
+                rating_form = RatingForm()
+        else: 
+            rating_form = RatingForm()
 
             
 
@@ -202,7 +208,11 @@ class FullRecipe(View):
                 comment = comment_form.save(commit=False)
                 comment.recipe = recipe
                 comment.save()
-                # return redirect('post_detail', post.slug)
+                return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
+            else:
+                comment_form = CommentForm()
+        else:
+            comment_form = CommentForm()
 
 
         return render(
@@ -279,10 +289,6 @@ class EditRecipe(UpdateView):
     template_name = "edit_recipe.html"
     form_class = RecipeForm
     success_url = reverse_lazy('home')
-
-    # def get_success_url(self):
-    #     URL = self.request.path_info
-    #     return HttpResponseRedirect(URL)
         
     def form_valid(self, form):
         form.instance.author_email = self.request.user
@@ -295,10 +301,6 @@ class DeleteRecipe(DeleteView):
     template_name = "delete_recipe.html"
     form_class = RecipeForm
     success_url = reverse_lazy('home')
-
-    # def get_success_url(self):
-    #     URL = self.request.path_info
-    #     return HttpResponseRedirect(URL)
         
     def form_valid(self, form):
         form.instance.author_email = self.request.user

@@ -132,56 +132,31 @@
     {% endif %}
     </div>
 
-   
-    
-    <!-- <div class="container">
-        <form action="" method="POST">
-            {% csrf_token %}
-             <div class="row">
-                <div class="col-1 text-end">
-                    <strong><p class="fontM rating-p">Rating:</p></strong>
-                  </div>
-                  <div class="col-1 g-0">
-                    {{ rating_form | crispy }}
-                        {% csrf_token %}
-                  </div>
-                    <div class="col-1 g-0 ">
-                        <button type="submit" class="btn submitButton fontH " ><i class="fa fa-star"></i></button>
-                    </div>
-            </div> 
-        </form> 
-    </div> -->
 
 
 <div class="container comment-bg">
     <div class="row">
         <!-- comments start-->
         <div class="col-md-8 card mb-4 mt-3 ">
-            <h3>Comments:</h3>
+            <h3 class="fontM fw-bold comments-underline">Comments:</h3>
             {% if not commented %}
-            <p> There are no comments here. Be the
+            <p class="fontH"> There are no comments here. Be the
                 first to add a comment.
                 {% if not user.is_authenticated %}
-                <a class="click" href="{% url 'account_login' %}">Sign in</a> here.</p>
-            <p>Or, if you have not created an account yet, 
-                <a class="click" href="{% url 'account_signup' %}">sign up</a> here.</p>
+                <a class="click fs-5 text-decoration-none fontM text-dark fw-bold" href="{% url 'account_login' %}">Sign In</a> here.</p>
+            <p class="fontH">Or, if you have not created an account yet, 
+                <a class="click fs-5 text-decoration-none fontM text-dark fw-bold" href="{% url 'account_signup' %}">Sign Up</a> here.</p>
                 {% endif %} 
             {% endif %}
             {% for comment in comments %}
-            <div class="comments{% if not comment.approved and comment.email == user.email %} faded{% elif not comment.approved %} d-none{% endif %}">
+            <div class="mt-3 comments{% if not comment.approved and comment.email == user.email %} faded{% elif not comment.approved %} d-none{% endif %}">
                 
-                <p class="font-weight-bold">
-                    <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                    {{ comment.name }}
-                    <span class="font-weight-normal">
-                        <!-- The comment's created date goes here -->
-                        {{ comment.created_on }}
-                    </span> wrote:
-                </p>
-                    {{ comment.comment | linebreaks }}
+                <p class="fontM lh">{{ comment.name }}: <strong class="fontH fw-normal fs-6">{{ comment.comment }}</strong></p> 
+                <p class="font-weight-normal fontM mt-2">On: {{ comment.created_on }} </p>
+                    
                 
                 {% if not comment.approved and comment.email == user.email %}
-                    <p class="approval">This comment is awaiting approval</p>
+                    <p class="approval fontH">This comment is awaiting approval</p>
                 {% endif %} 
             </div>
             {% endfor %}  
@@ -189,12 +164,12 @@
         <!-- comments end -->
 
         <!-- comment form start -->
-        <div class="col-md-4 card mb-4 mt-3 ">
+        <div class="col-md-4 card mb-4 mt-3 align-self-starts">
             
                 <!-- For later -->
                 {% if user.is_authenticated %}
     
-                <h3>Leave a comment:</h3>
+                <h3 class="fontM fw-bold comments-underline">Leave a comment:</h3>
                 <p>Posting as: {{ user }}</p>
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
@@ -202,7 +177,7 @@
                     <button type="submit" class="btn mt-4 submitButton fontH">Submit</button>
                 </form>
                 {% else %}
-                <h3>Log in to leave a comment</h3>
+                <h3 class="fontM fw-bold comments-underline">Log in to leave a comment</h3>
                 {% endif %}
             
         </div> 
