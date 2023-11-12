@@ -547,11 +547,15 @@ body {
 
   .account-container {
     height: auto;
-    width: 50%;
+    width: 70%;
     margin: auto;
     border-radius: 1%;
     border: 3px solid #E6BEAE;
     background-color: #E6BEAE;
+  }
+
+  .socialaccount_providers {
+    overflow: hidden;
   }
 
 @media screen and (max-width: 1200px) {
@@ -572,6 +576,10 @@ body {
         font-size: xx-large;
         letter-spacing: 3px;
     }
+    .account-container {
+        width: 100%;
+      }
+    
 }
 
 @media screen and (max-width: 340px) {
