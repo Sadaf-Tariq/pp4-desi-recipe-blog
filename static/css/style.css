@@ -548,18 +548,11 @@ body {
     width: 100%;
     text-align: center;
   }
- 
-  .rating-col {
-    width: 100;
-    height: auto;
-    background-color: #23BBBB;
-    text-align: center;
-  }
+  
+  .rating-p {
 
-  .form-li {
-    list-style-type: none; 
-    display : inline;
-    }
+    font-size: 150%;
+  }
 
 @media screen and (max-width: 1200px) {
     .child {

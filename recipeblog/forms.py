@@ -1,6 +1,8 @@
 from .models import Comment, Recipe, Rating
 from django import forms
 from django_summernote.widgets import SummernoteWidget
+from crispy_forms.helper import FormHelper
+
 
 class CommentForm(forms.ModelForm):
     comment_hidden_field = forms.BooleanField(widget=forms.HiddenInput, initial=True)
@@ -28,11 +30,16 @@ class RecipeForm(forms.ModelForm):
 class RatingForm(forms.ModelForm):
     rating_hidden_field = forms.BooleanField(widget=forms.HiddenInput, initial=True)
 
+    def __init__(self, *args, **kwargs):
+        super(RatingForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.fields['rating'].label = ""
+
     class Meta: 
         model = Rating
         fields = ('rating',)
         CHOICE = (
-            ('0',0),
+            ('0', 0),
             ('1', 1),
             ('2', 2),
             ('3', 3),
@@ -42,3 +49,5 @@ class RatingForm(forms.ModelForm):
         widgets = {
             'rating': forms.Select(choices=CHOICE)
         }
+
+       

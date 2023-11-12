@@ -88,8 +88,29 @@
                         <!-- Our total_comments variable goes before the closing strong tag -->
                         {{ comment_count }}</strong>
                 </div>
+                
                 <hr>
         </div>
+
+        <div class="container">
+            <form action="" method="POST">
+                {% csrf_token %}
+                 <div class="row justify-content-center">
+                    <div class="col-lg-1 col-sm-3 col-4 text-end">
+                        <strong><p class="fontM rating-p">Rating:</p></strong>
+                      </div>
+                      <div class="col-lg-1 col-sm-2 col-3  g-0">
+                        {{ rating_form | crispy }}
+                            {% csrf_token %}
+                      </div>
+                        <div class="col-lg-1 col-sm-3 col-3 g-0 ">
+                            <button type="submit" class="btn submitButton fontH " ><i class="fa fa-star"></i></button>
+                        </div>
+                </div> 
+            </form> 
+        </div>
+
+        <hr>
 
         <div class="ingredients-container col-12 col-lg-6 mt-3 align-self-center">
             <h2 class="fontM" id="ingredients">Ingredients:</h2>
@@ -111,37 +132,26 @@
     {% endif %}
     </div>
 
-    <!-- <div class="rating-col">           
-        {% if user.is_authenticated %}
-            <form method="post" >
-                        {{ rating_form | crispy }}
-                            {% csrf_token %}
-                <input type="submit"  value="Submit" class="btn mt-4 submitButton fontH" />
-            </form>
-        {% endif %}
+   
+    
+    <!-- <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+             <div class="row">
+                <div class="col-1 text-end">
+                    <strong><p class="fontM rating-p">Rating:</p></strong>
+                  </div>
+                  <div class="col-1 g-0">
+                    {{ rating_form | crispy }}
+                        {% csrf_token %}
+                  </div>
+                    <div class="col-1 g-0 ">
+                        <button type="submit" class="btn submitButton fontH " ><i class="fa fa-star"></i></button>
+                    </div>
+            </div> 
+        </form> 
     </div> -->
 
-    <form method="post" id="id_form" class="mx-auto text-left">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-2 ">
-                <p class="fontH text-right">Rate the recipe:</p>
-            </div>
-            
-            {% for field in rating_form %}
-                <div class="col-3 text-left">
-                    <p class="fontH text-right">Rate the recipe:</p>
-                    {{ field }}
-                </div>
-            {% endfor %}
-            <div class="col-1 ">
-                <input type="submit"  value="Submit" class="btn submitButton fontH" />
-            </div>
-        </div>
-    </form>
-
-
-  
 
 <div class="container comment-bg">
     <div class="row">
