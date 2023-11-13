@@ -89,7 +89,7 @@ class Recipe(models.Model):
         return Comment.objects.filter(recipe_id=self, approved=True).count()
 
     def __str__(self):
-        return f"{self.author_name} | {self.title}: {self.average_rating()} |Comments: {self.number_of_comments()}"
+        return f"{self.author_name} | {self.title}: {self.average_rating()} | Comments: {self.number_of_comments()}"
 
     def save(self, *args, **kwargs):
         """

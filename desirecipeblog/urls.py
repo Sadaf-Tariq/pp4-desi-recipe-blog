@@ -26,4 +26,4 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', include('recipeblog.urls'), name='recipeblog_urls'),
     path('accounts/', include('allauth.urls')),
-] +  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

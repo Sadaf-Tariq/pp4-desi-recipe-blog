@@ -5,7 +5,8 @@ from crispy_forms.helper import FormHelper
 
 
 class CommentForm(forms.ModelForm):
-    comment_hidden_field = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    comment_hidden_field = forms.BooleanField(widget=forms.HiddenInput,
+                                              initial=True)
 
     class Meta:
         model = Comment
@@ -15,7 +16,7 @@ class CommentForm(forms.ModelForm):
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ('title', 'category', 'method', 'author_name', 
+        fields = ('title', 'category', 'method', 'author_name',
                   'featured_image', 'ingredients', 'instructions',
                   'prep_time', 'cooking_time', 'servings', 'calories')
         widgets = {
@@ -27,15 +28,17 @@ class RecipeForm(forms.ModelForm):
                 attrs={'placeholder': 'Input in minutes'})
         }
 
+
 class RatingForm(forms.ModelForm):
-    rating_hidden_field = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    rating_hidden_field = forms.BooleanField(
+        widget=forms.HiddenInput, initial=True)
 
     def __init__(self, *args, **kwargs):
         super(RatingForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.fields['rating'].label = ""
 
-    class Meta: 
+    class Meta:
         model = Rating
         fields = ('rating',)
         CHOICE = (
@@ -45,9 +48,7 @@ class RatingForm(forms.ModelForm):
             ('3', 3),
             ('4', 4),
             ('5', 5),
-            )
+        )
         widgets = {
             'rating': forms.Select(choices=CHOICE)
         }
-
-       

@@ -8,7 +8,6 @@ from .forms import CommentForm, RecipeForm, RatingForm
 from django.urls import reverse_lazy
 
 
-
 class HomeView(generic.ListView):
 
     context_object_name = "model"
@@ -23,6 +22,7 @@ class HomeView(generic.ListView):
         }
         return myset
 
+
 class RecipeList(generic.ListView):
     """
     Renders all objects of Recipe model as a list
@@ -31,6 +31,7 @@ class RecipeList(generic.ListView):
     queryset = Recipe.objects.order_by("-created_on")
     template_name = "all_recipes.html"
     paginate_by = 8
+
 
 class FullRecipe(View):
 
@@ -43,11 +44,10 @@ class FullRecipe(View):
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
-        counts = recipe.comments.filter(recipe=recipe).count() 
+        counts = recipe.comments.filter(recipe=recipe).count()
         if counts > 0:
             self.commented = True
 
-    
         return render(
             request,
             "full_recipe.html",
@@ -61,9 +61,7 @@ class FullRecipe(View):
             },
         )
 
-    
     def post(self, request, slug, *args, **kwargs, ):
-
 
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
@@ -71,34 +69,35 @@ class FullRecipe(View):
         liked = False
         if recipe.likes.filter(id=self.request.user.id).exists():
             liked = True
-        
+
         rating_form = RatingForm()
         comment_form = CommentForm()
 
         if 'rating_hidden_field' in self.request.POST:
             rating_form = RatingForm(data=request.POST)
             if rating_form.is_valid():
-                counts = recipe.comments.filter(recipe=recipe).count() 
+                counts = recipe.comments.filter(recipe=recipe).count()
                 if counts > 0:
                     self.commented = True
                 rating_form.instance.user_id = request.user.id
-                reviewCheck = Rating.objects.filter(user=request.user, recipe=recipe).count()
+                reviewCheck = Rating.objects.filter(
+                    user=request.user, recipe=recipe).count()
                 if request.user.is_authenticated:
                     if reviewCheck > 0:
-                        Rating.objects.filter(recipe=recipe, user=request.user).first().delete() 
+                        Rating.objects.filter(
+                            recipe=recipe, user=request.user).first().delete()
                 rating = rating_form.save(commit=False)
                 rating.recipe = recipe
                 rating.save()
                 return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
             else:
-                counts = recipe.comments.filter(email=request.user, recipe=recipe).count() 
+                counts = recipe.comments.filter(
+                    email=request.user, recipe=recipe).count()
                 if counts > 0:
                     self.commented = True
                 rating_form = RatingForm()
-        else: 
+        else:
             rating_form = RatingForm()
-
-            
 
         if 'comment_hidden_field' in self.request.POST:
             comment_form = CommentForm(data=request.POST)
@@ -113,7 +112,6 @@ class FullRecipe(View):
                 comment_form = CommentForm()
         else:
             comment_form = CommentForm()
-
 
         return render(
             request,
@@ -184,28 +182,28 @@ class CreateNewRecipe(CreateView):
         obj.save()
         return super().form_valid(form)
 
+
 class EditRecipe(UpdateView):
     model = Recipe
     template_name = "edit_recipe.html"
     form_class = RecipeForm
     success_url = reverse_lazy('home')
-        
+
     def form_valid(self, form):
         form.instance.author_email = self.request.user
         messages.add_message(self.request, messages.SUCCESS,
                              "Your recipe has been updated successfully.")
         return super().form_valid(form)
+
 
 class DeleteRecipe(DeleteView):
     model = Recipe
     template_name = "delete_recipe.html"
     form_class = RecipeForm
     success_url = reverse_lazy('home')
-        
+
     def form_valid(self, form):
         form.instance.author_email = self.request.user
         messages.add_message(self.request, messages.SUCCESS,
                              "Your recipe has been updated successfully.")
         return super().form_valid(form)
-
-

@@ -19,27 +19,20 @@ from django.contrib.messages import constants as messages
 if os.path.isfile("env.py"):
     import env
 
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-sadaf-tariq-pp4-desi-rec-hdfcz0pz20.us2.codeanyapp.com', 'pp4-desi-recipe-blog-04aed9a2aa93.herokuapp.com', 'localhost']
+    '8000-sadaf-tariq-pp4-desi-rec-hdfcz0pz20.us2.codeanyapp.com',
+    'pp4-desi-recipe-blog-04aed9a2aa93.herokuapp.com', 'localhost']
 
 AUTH_USER_MODEL = "users.CustomUser"
-
-# Application definition
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -68,48 +61,9 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
 ]
 
-# clientID: 351892292292-b7bf4aejrdabebbgphijjsbsbmuii828.apps.googleusercontent.com
-# clientsecret: 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
-
-# clientIDFB: 793651412451024
-# clientsecret: 573fb8cee7b7b9533d333fd0714cec8c
 
 SITE_ID = 1
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        },
-        'OAUTH_PKCE_ENABLED': True,
-    },
-    'facebook': {
-        'METHOD': 'oauth2',
-        # 'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
-        'SCOPE': ['email', 'public_profile'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'INIT_PARAMS': {'cookie': True},
-        'FIELDS': [
-            'id',
-            'first_name',
-            'last_name',
-            'middle_name',
-            'name',
-            'name_format',
-            'picture',
-            'short_name'
-        ],
-        'EXCHANGE_TOKEN': True,
-        # 'LOCALE_FUNC': 'path.to.callable',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v13.0',
-        'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
-    }
-}
 
 SOCIALACCOUNT_LOGIN_ON_GET = True
 

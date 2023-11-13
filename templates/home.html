@@ -1,62 +1,64 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
 <div class="container">
-    <div class="row ">
+    <div class="row">
         {% for recipe in model.recipe_list %}
         <div class="card-margin col-12 col-sm-6 col-lg-3 opacity">
-            <a href="{% url 'full_recipe' recipe.slug %}">
             <div class="image-container img-thumbnail-margin">
-                {% if "placeholder" in recipe.featured_image.url %}
-                <img class="img-thumbnail"
-                    src="https://res.cloudinary.com/dvbuzkqgj/image/upload/v1699226293/zxgxa4fieerchccyk8em.jpg"
-                    alt="placeholder image">
-                {% else %}
-                <img class="img-thumbnail" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
-                {% endif %}
-                <a href="{% url 'full_recipe' recipe.slug %}" class="post-link">
+                <a href="{% url 'full_recipe' recipe.slug %}">
+                    {% if "placeholder" in recipe.featured_image.url %}
+                    <img class="img-thumbnail"
+                        src="https://res.cloudinary.com/dvbuzkqgj/image/upload/v1699226293/zxgxa4fieerchccyk8em.jpg"
+                        alt="placeholder image">
+                    {% else %}
+                    <img class="img-thumbnail" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
+                    {% endif %}
                     <div class="image-flash-title">
                         <p class="author fontH">{{ recipe.title }}</p>
                     </div>
+                    <div class="image-flash">
+                        <p class="author fontH">Author: {{ recipe.author_name }}</p>
+                    </div>
                 </a>
-                <div class="image-flash">
-                    <p class="author fontH">Author: {{ recipe.author_name }}</p>
-                </div>
-
-                <p class="card-text fontM lh"><strong>Avg Rating:
-                    <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}"> </span>
-                    <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}" ></span>
-                    <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
-                  {{ recipe.average_rating }}/5.0 </strong><p>
-                
-                <p class="lh"><strong class="card-text fontM">
-                        Likes:
-                        {{ recipe.number_of_likes }} <i class="far fa-heart"></i> |
-                        Comments:
-                        {{ recipe.number_of_comments}} <i class="fa-regular fa-comment"></i> </strong>
+                <p class="card-text fontM lh">
+                    <strong>Avg Rating:
+                        <span class="fa fa-star {% if recipe.average_rating > 0 %} checked {% endif %}">
+                        </span>
+                        <span class="fa fa-star {% if recipe.average_rating > 1 %} checked {% endif %}"></span>
+                        <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
+                        <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}"></span>
+                        <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
+                        {{ recipe.average_rating }}/5.0
+                    </strong>
                 </p>
-            </a>
+
+                <p class="lh">
+                    <strong class="card-text fontM">
+                        Likes: {{ recipe.number_of_likes }} <i class="far fa-heart"></i> |
+                        Comments: {{ recipe.number_of_comments}}
+                        <i class="fa-regular fa-comment"></i>
+                    </strong>
+                </p>
             </div>
         </div>
         {% if forloop.counter|divisibleby:4 %}
     </div>
-    <div class="row">
-        {% endif %}
-        {% endfor %}
-    </div>
+    <div class="row">{% endif %} {% endfor %}</div>
 </div>
 
 {% if is_paginated %}
 <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
-        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-        {% endif %}
-        {% if page_obj.has_next %}
-        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+        <li>
+            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV
+            </a>
+        </li>
+        {% endif %} {% if page_obj.has_next %}
+        <li>
+            <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                NEXT &raquo;</a>
+        </li>
         {% endif %}
     </ul>
 </nav>
@@ -64,88 +66,84 @@
 
 <hr>
 
-<div class="w-100 cat-heading mt-5">
-    <p class="cat-h-p cat-h1 fontM">
-        Choose by:   <h1 class="cat-h1 fontM logo-text">   Food Category</h1>
-    </p>
+<div class="w-100 cat-heading mt-5 mb-2">
+    <p class="cat-h-p cat-h1 fontM">Choose by:&nbsp;&nbsp;</p>
+    <h1 class="cat-h1 fontM logo-text">Food Category</h1>
 </div>
 
-
- <div class="cover">
-    <button class="left arrows" onclick="rightScroll()"><i class="fa-solid fa-arrow-left"></i></button>
-   <div class="scroll-imagesCat">
+<div class="cover">
+    <button class="left arrows" onclick="rightScroll()">
+        <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div class="scroll-imagesCat">
         {% for category in model.category_list %}
         <div class="child opacity">
             <a class="cat-text-decor" href="/category/{{ category }}">
                 {% if category.food_type == 'curry' %}
                 <img src="{% static 'image/category/curry.jpg' %}" alt="Food_type 'Curry' ">
-                {% endif %}
-                {% if category.food_type == 'kebab' %}
+                {% endif %} {% if category.food_type == 'kebab' %}
                 <img src="{% static 'image/category/kebab.jpg' %}" alt="Food_type 'Kebab' ">
-                {% endif %}
-                {% if category.food_type == 'paneer' %}
+                {% endif %} {% if category.food_type == 'paneer' %}
                 <img src="{% static 'image/category/paneer.jpg' %}" alt="Food_type 'Paneer' ">
-                {% endif %}
-                {% if category.food_type == 'bread' %}
+                {% endif %} {% if category.food_type == 'bread' %}
                 <img src="{% static 'image/category/bread.jpg' %}" alt="Food_type 'Bread' ">
-                {% endif %}
-                {% if category.food_type == 'rice' %}
+                {% endif %} {% if category.food_type == 'rice' %}
                 <img src="{% static 'image/category/rice.jpg' %}" alt="Food_type 'Rice' ">
-                {% endif %}
-                {% if category.food_type == 'sweet' %}
+                {% endif %} {% if category.food_type == 'sweet' %}
                 <img src="{% static 'image/category/sweet.jpg' %}" alt="Food_type 'Sweet' ">
                 {% endif %}
-                    <div class="cat-title"><p class="fontM cat-p text-dark fw-bold"> {{ category.food_type }}</p></div>
+                <div class="cat-title">
+                    <p class="fontM cat-p text-dark fw-bold">{{ category.food_type }}</p>
+                </div>
             </a>
         </div>
         {% endfor %}
-   </div>
-   <button class="right arrows" onclick="leftScroll()"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <button class="right arrows" onclick="leftScroll()">
+        <i class="fa-solid fa-arrow-right"></i>
+    </button>
 </div>
-
-
-
 
 <hr>
 
-<div class="w-100 cat-heading mt-5">
-    <p class="cat-h-p cat-h1 fontM">
-        Choose by:
-    <h1 class="cat-h1 fontM logo-text"> Food Preperation Method</h1>
-    </p>
+<div class="w-100 cat-heading mt-5 mb-2">
+    <p class="cat-h-p cat-h1 fontM">Choose by:&nbsp;&nbsp;</p>
+    <h1 class="cat-h1 fontM logo-text">Food Preperation Method</h1>
 </div>
 
-
 <div class="cover">
-    <button class="left arrows" onclick="rightScrollM()"><i class="fa-solid fa-arrow-left"></i></button>
-   <div class="scroll-imagesMethod">
+    <button class="left arrows" onclick="rightScrollM()">
+        <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div class="scroll-imagesMethod">
         {% for method in model.method_list %}
         <div class="child opacity">
             <a class="cat-text-decor" href="/method/{{ method }}">
                 {% if method.recipe_method == 'boiling' %}
                 <img src="{% static 'image/method/boiling.jpg' %}" alt="Method_type 'Boiling' ">
-                {% endif %}
-                {% if method.recipe_method == 'frying' %}
+                {% endif %} {% if method.recipe_method == 'frying' %}
                 <img src="{% static 'image/method/frying.jpg' %}" alt="Method_type 'Frying' ">
-                {% endif %}
-                {% if method.recipe_method == 'grilling' %}
+                {% endif %} {% if method.recipe_method == 'grilling' %}
                 <img src="{% static 'image/method/grilling.jpg' %}" alt="Method_type 'Grilling' ">
-                {% endif %}
-                {% if method.recipe_method == 'slow-cooking' %}
+                {% endif %} {% if method.recipe_method == 'slow-cooking' %}
                 <img src="{% static 'image/method/slow-cooking.jpg' %}" alt="Method_type 'slow-cooking' ">
-                {% endif %}
-                {% if method.recipe_method == 'stir-frying' %}
+                {% endif %} {% if method.recipe_method == 'stir-frying' %}
                 <img src="{% static 'image/method/stir-frying.jpg' %}" alt="Method_type 'stir-frying' ">
-                {% endif %}
-                {% if method.recipe_method == 'tadka' %}
+                {% endif %} {% if method.recipe_method == 'tadka' %}
                 <img src="{% static 'image/method/tadka.jpg' %}" alt="Method_type 'Tadka' ">
                 {% endif %}
-                <div class="cat-title"><p class="fontM cat-p text-dark fw-bold"> {{ method.recipe_method }}</p></div>
+                <div class="cat-title">
+                    <p class="fontM cat-p text-dark fw-bold">
+                        {{ method.recipe_method }}
+                    </p>
+                </div>
             </a>
         </div>
         {% endfor %}
-   </div>
-   <button class="right arrows" onclick="leftScrollM()"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <button class="right arrows" onclick="leftScrollM()">
+        <i class="fa-solid fa-arrow-right"></i>
+    </button>
 </div>
-
+<!---->
 {% endblock %}
