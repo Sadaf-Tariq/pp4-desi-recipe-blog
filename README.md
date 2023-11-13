@@ -17,10 +17,14 @@ everythingDESI is a recipe blog web application, for people who love desi food. 
 their favorite food recipes, share their opinions, like, and give ratings to help others to try the best ones available.
 
 The website is interactive and responsive and also allows users to register themselves. 
-![Responsive image](/images/amiresponsive.png)
+![Responsive image](/README_FILES/respponsive.png)
 
 # Data
 ## Database Diagram
+![Database Diagram](/README_FILES/Database-Diagram.png)
+
+
+I used Lucid Charts to visualize the database schema.
 
 # Features
 * The Header
