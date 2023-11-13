@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <div class="container">
@@ -76,8 +77,9 @@
         {% for category in model.category_list %}
         <div class="child opacity">
             <a class="cat-text-decor" href="/category/{{ category }}">
-                <img src="/static/image/Category/{{ category }}.jpg" alt="">
+                <img  src="{% static 'image/Category/' %}{{category}}.jpg" alt="">
                     <div class="cat-title"><p class="fontM cat-p text-dark fw-bold"> {{ category.food_type }}</p></div>
+                    <!-- src="/static/image/Category/{{ category }}.jpg" -->
             </a>
         </div>
         {% endfor %}
@@ -102,7 +104,7 @@
         {% for method in model.method_list %}
         <div class="child opacity">
             <a class="cat-text-decor" href="/method/{{ method }}">
-                <img src="/static/image/Method/{{ method }}.jpg" alt="">
+                <img src="{% static 'image/Method/' %}{{method}}.jpg" alt="">
                 <div class="cat-title"><p class="fontM cat-p text-dark fw-bold"> {{ method.recipe_method }}</p></div>
             </a>
         </div>
