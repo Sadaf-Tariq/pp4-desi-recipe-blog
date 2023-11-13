@@ -92,6 +92,8 @@
                 <hr>
         </div>
 
+        {% if user.is_authenticated %}
+
         <div class="container">
             <form action="" method="POST">
                 {% csrf_token %}
@@ -109,8 +111,17 @@
                 </div> 
             </form> 
         </div>
-
         <hr>
+        {% else %}
+        <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-3 col-4 text-center">
+                        <p class="fontM fw-bold fs-4">Login to rate this recipe.</p>
+                    </div>
+                </div>
+        </div>
+        <hr>
+        {% endif %}
 
         <div class="ingredients-container col-12 col-lg-6 mt-3 align-self-center">
             <h2 class="fontM" id="ingredients">Ingredients:</h2>
