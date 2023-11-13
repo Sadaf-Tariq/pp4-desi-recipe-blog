@@ -207,3 +207,5 @@ class DeleteRecipe(DeleteView):
         messages.add_message(self.request, messages.SUCCESS,
                              "Your recipe has been updated successfully.")
         return super().form_valid(form)
+
+
