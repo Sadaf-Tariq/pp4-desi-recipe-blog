@@ -3,33 +3,16 @@
 {% load crispy_forms_tags %}
 {% block content%}
 
-<!-- <div class="container form align-items-center">
-    <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-            <form action="{% url 'new_recipe' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="card card-body">
-                    <h1>Add a Recipe</h1>
-                    {{ form | crispy }}
-                </div>
-                <div class="buttons">
-                    <button class="btn btn-success links" type="submit">Save</button>
-                    <a href="#" class="btn btn-danger back links">Cancel</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div> -->
-
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6 offset-lg-2 background-image">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 background-image">
+            <h1 class="fontM logo-text mt-4 mb-3 text-center">Add your favourite recipe</h1>
             <form action="{% url 'new_recipe' %}" method="POST" enctype="multipart/form-data">
                 <div>
                     {{ form | crispy }}
                     {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Add</button>
-                    <a href="{% url 'new_recipe' %}" class="btn btn-danger btn-lg">Cancel</a>
+                    <button id="submitButton" type="submit" class="btn submitButton btn-lg mt-5 mb-5 ">Add</button>
+                    <a href="{% url 'new_recipe' %}" class="btn submitButton btn-lg mt-5 mb-5">Cancel</a>
                 </div>
             </form>
         </div>

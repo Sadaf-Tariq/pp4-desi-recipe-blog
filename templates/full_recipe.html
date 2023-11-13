@@ -12,13 +12,13 @@
           src="https://res.cloudinary.com/djo7pphyn/image/upload/v1698436271/ujp4et9qmtsvztyj0png.jpg"
           class="scale"
           alt="placeholder"
-        />
+        >
         {% else %}
         <img
           src="{{ recipe.featured_image.url }}"
           class="scale"
           alt="{{ recipe.title }}"
-        />
+        >
         {% endif %}
       </div>
       <div class="recipe-title">
@@ -34,7 +34,7 @@
             >Rating: {{ recipe.average_rating }}/5.0
             <i class="far fa-star"></i> | Likes: {{ recipe.number_of_likes }}
             <i class="far fa-heart"></i> | 
-            Comments: {{ comment_count }} <i class="far fa-comments"></i>
+            Comments: {{ recipe.number_of_comments }} <i class="far fa-comments"></i>
           </strong>
         </p>
       </div>
@@ -66,27 +66,30 @@
                 </p>
                 <hr>
                 <div class="col ">
-                    <strong>
+                    
                         {% if user.is_authenticated %}
                         <form class="d-inline" action="{% url 'recipe_like' recipe.slug %}" method="POST">
                             {% csrf_token %}
                             {% if liked %}
+                            <strong>
                             <button type="submit" name="recipeblog_id" value="{{recipe.slug}}" class="btn-like" aria-label="like"><i
-                                    class="fas fa-heart"></i></button>
+                                    class="fas fa-heart"></i></button></strong>
                             {% else %}
+                            <strong>
                             <button type="submit" name="recipeblog_id" value="{{recipe.slug}}" class="btn-like" aria-label="like"><i
-                                    class="far fa-heart"></i></button>
+                                    class="far fa-heart"></i></button></strong>
                             {% endif %}
                         </form>
                         {% else %}
-                        <span class="text"><i class="far fa-heart"></i></span>
+                        <strong>
+                        <span class="text"><i class="far fa-heart"></i></span></strong>
                         {% endif %}
                         <!-- The number of likes goes before the closing strong tag -->
-                        <span class="text">{{ recipe.number_of_likes }} </span>
-                    </strong>&#160 &#160 &#160 &#160 &#160
+                        <strong><span class="text">{{ recipe.number_of_likes }} </span></strong>
+                    &#160; &#160; &#160; &#160; &#160;
                     <strong class="text"><i class="far fa-comments"></i>
                         <!-- Our total_comments variable goes before the closing strong tag -->
-                        {{ comment_count }}</strong>
+                        {{ recipe.number_of_comments }}</strong>
                 </div>
                 
                 <hr>
@@ -95,11 +98,11 @@
         {% if user.is_authenticated %}
 
         <div class="container">
-            <form action="" method="POST">
+            <form method="POST">
                 {% csrf_token %}
                  <div class="row justify-content-center">
                     <div class="col-lg-1 col-sm-3 col-4 text-end">
-                        <strong><p class="fontM rating-p">Rating:</p></strong>
+                        <p class="fontM rating-p"><strong>Rating:</strong></p>
                       </div>
                       <div class="col-lg-1 col-sm-2 col-3  g-0">
                         {{ rating_form | crispy }}
@@ -148,7 +151,7 @@
 <div class="container comment-bg">
     <div class="row">
         <!-- comments start-->
-        <div class="col-md-8 card mb-4 mt-3 ">
+        <div class="col-md-7 card mb-4 mt-3 ">
             <h3 class="fontM fw-bold comments-underline">Comments:</h3>
             {% if not commented %}
             <p class="fontH"> There are no comments here. Be the
@@ -175,7 +178,7 @@
         <!-- comments end -->
 
         <!-- comment form start -->
-        <div class="col-md-4 card mb-4 mt-3 align-self-starts">
+        <div class="col-md-5 card mb-4 mt-3 align-self-starts">
             
                 <!-- For later -->
                 {% if user.is_authenticated %}
@@ -198,6 +201,6 @@
 
 
 </div>
-
+</div>
 {% endblock %}
 

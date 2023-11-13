@@ -87,9 +87,7 @@ body {
 
 .background-image,
 .background-image-delete {
-    background-image: url("/static/image/background-old.jpg");
-    background-size: cover;
-    margin: auto;
+    background-color: #E6BEAE;
 }
 
 .background-image-delete {
@@ -262,7 +260,7 @@ body {
 
 .all_details,
 .comment-bg {
-    background-color: rgb(230, 190, 174, 0.8);
+    background-color: #E6BEAE;
 }
 
 #ingredients,

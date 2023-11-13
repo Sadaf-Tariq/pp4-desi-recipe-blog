@@ -5,8 +5,8 @@
     <div class="row ">
         {% for recipe in recipe_list %}
         <div class="recipes-card card-margin col-12 col-sm-6 col-lg-3 opacity">
-            <a href="{% url 'full_recipe' recipe.slug %}">
             <div class="image-container img-thumbnail-margin">
+                <a href="{% url 'full_recipe' recipe.slug %}">
                 {% if "placeholder" in recipe.featured_image.url %}
                 <img class="img-thumbnail"
                     src="https://res.cloudinary.com/dvbuzkqgj/image/upload/v1699226293/zxgxa4fieerchccyk8em.jpg"
@@ -14,15 +14,13 @@
                 {% else %}
                 <img class="img-thumbnail" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
                 {% endif %}
-                <a href="{% url 'full_recipe' recipe.slug %}" class="post-link">
-                    <div class="image-flash-title">
-                        <p class="author fontH">{{ recipe.title }}</p>
-                    </div>
-                </a>
+                <div class="image-flash-title">
+                    <p class="author fontH">{{ recipe.title }}</p>
+                </div>
                 <div class="image-flash">
                     <p class="author fontH">Author: {{ recipe.author_name }}</p>
                 </div>
-                
+                </a>
                 <div class="recipes-info">
 
                     <p class="card-text fontM text-center"><strong>Avg Rating:
@@ -31,7 +29,7 @@
                         <span class="fa fa-star {% if recipe.average_rating > 2 %} checked {% endif %}"></span>
                         <span class="fa fa-star {% if recipe.average_rating > 3 %} checked {% endif %}" ></span>
                         <span class="fa fa-star {% if recipe.average_rating > 4 %} checked {% endif %}"></span>
-                      {{ recipe.average_rating }}/5.0 </strong><p>
+                      {{ recipe.average_rating|floatformat:1 }}/5.0 </strong><p>
 
 
                     <p class="fontH text-center "><i class="fa-solid fa-user-clock"></i>
@@ -41,7 +39,6 @@
                           - <i class="fa-solid fa-bowl-food"></i> Category: {{recipe.category }}</p>
 
                     <p class="fontH text-center"><i class="fa-solid fa-utensils"></i> Servings: {{ recipe.servings }}</p>
-                </a>
                 </div>
 
             </div>
