@@ -35,14 +35,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '8000-sadaftariq-pp4desirecip-l9u1j985k50.ws-eu106.gitpod.io', 'pp4-desi-recipe-blog-04aed9a2aa93.herokuapp.com', 'localhost']
+    '8000-sadaf-tariq-pp4-desi-rec-hdfcz0pz20.us2.codeanyapp.com', 'pp4-desi-recipe-blog-04aed9a2aa93.herokuapp.com', 'localhost']
 
 AUTH_USER_MODEL = "users.CustomUser"
 
 # Application definition
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend', 
+    'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
@@ -88,7 +88,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'OAUTH_PKCE_ENABLED': True,
     },
     'facebook': {
-        'METHOD': 'oauth2',  
+        'METHOD': 'oauth2',
         # 'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
         'SCOPE': ['email', 'public_profile'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
@@ -111,7 +111,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-SOCIALACCOUNT_LOGIN_ON_GET=True
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -140,15 +140,16 @@ SUMMERNOTE_CONFIG = {
         'width': '100%',
         'height': '380',
 
-    'toolbar': [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear',
-                  'strikethrough', 'superscript', 'subscript']],
-        ['fontname', ['fontname']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['view', ['fullscreen', 'codeview', 'help']],
-    ],
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear',
+                      'strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ],
 
     }
 

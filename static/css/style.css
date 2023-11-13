@@ -1,10 +1,10 @@
-
 body {
     background-color: #F9FAFC;
 }
 
 .bg {
-    background-color: #3a3a3a;;
+    background-color: #3a3a3a;
+    ;
 }
 
 * {
@@ -85,20 +85,22 @@ body {
     height: auto;
 }
 
-.background-image, .background-image-delete {
-    background-image: url("/static/image/background-old.jpg") ;
+.background-image,
+.background-image-delete {
+    background-image: url("/static/image/background-old.jpg");
     background-size: cover;
     margin: auto;
 }
 
 .background-image-delete {
     height: 500px;
-    
+
 }
 
 .delete-p {
     margin-top: 180px;
 }
+
 /* Recipe detail */
 
 /* copy frm pp4 */
@@ -236,7 +238,7 @@ body {
 }
 
 .recipes-card {
-    height: 600px; 
+    height: 600px;
     padding: 5px;
 }
 
@@ -377,7 +379,8 @@ body {
 /* end */
 
 
-.category-container, .method-container {
+.category-container,
+.method-container {
     height: auto;
     width: 88%;
     display: flex;
@@ -425,11 +428,13 @@ body {
     background-color: #E6BEAE;
 }
 
-.cat-text-decor, .method-text-decor{
+.cat-text-decor,
+.method-text-decor {
     text-decoration: none;
 }
 
-.cat-p, .method-p {
+.cat-p,
+.method-p {
     text-align: center;
     font-size: 17px;
     color: white;
@@ -449,11 +454,12 @@ body {
 }
 
 .checked {
-    color : orange;
+    color: orange;
 }
 
 
-.scroll-imagesCat, .scroll-imagesMethod {
+.scroll-imagesCat,
+.scroll-imagesMethod {
     width: 95%;
     height: auto;
     display: flex;
@@ -463,54 +469,54 @@ body {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     margin: auto;
-  }
-  
-  .scroll-imagesCat::-webkit-scrollbar {
+}
+
+.scroll-imagesCat::-webkit-scrollbar {
     width: 5px;
     height: 8px;
     background-color: transparent;
-  }
+}
 
-  .scroll-imagesMethod::-webkit-scrollbar {
+.scroll-imagesMethod::-webkit-scrollbar {
     width: 5px;
     height: 8px;
     background-color: transparent;
-  }
-  
-  
-  .scroll-imagesCat::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
+}
 
-  .scroll-imagesMethod::-webkit-scrollbar-thumb {
-    background-color: transparent;
-  }
-  
 
-  .child {
+.scroll-imagesCat::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.scroll-imagesMethod::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+
+.child {
     width: 250px;
     height: 350px;
     margin: 1px 10px;
     overflow: hidden;
-    flex: none; 
+    flex: none;
     margin-right: 60px;
- }
+}
 
- .child img {
+.child img {
     width: 100%;
     height: 90%;
     border: 5px solid #f4f3ee;
     object-fit: cover;
 }
 
-  .cover {
+.cover {
     width: 90%;
     padding: 0px 30px;
     position: relative;
     margin: auto;
-  }
+}
 
-  .arrows {
+.arrows {
     position: absolute;
     top: 45%;
     transform: translateY(-50%);
@@ -519,60 +525,64 @@ body {
     height: 40px;
     width: 40px;
     background-color: #E6BEAE;
-  }
+}
 
-  .right {
+.right {
     right: 0;
-  }
+}
 
-  .left {
+.left {
     left: 0;
-  }
+}
 
-  .lh {
-    line-height: 0;   /* within paragraph */
+.lh {
+    line-height: 0;
+    /* within paragraph */
     margin-bottom: 0;
-  }
+}
 
-  .edit-delete-btn {
+.edit-delete-btn {
     width: 100%;
     text-align: center;
-  }
-  
-  .rating-p {
+}
+
+.rating-p {
 
     font-size: 150%;
-  }
+}
 
-  .account-container {
+.account-container {
     height: auto;
     width: 70%;
     margin: auto;
     border-radius: 1%;
     border: 3px solid #E6BEAE;
     background-color: #E6BEAE;
-  }
+}
 
-  .socialaccount_providers { 
+.socialaccount_providers {
     overflow: hidden;
-  }
+}
 
-  .cat-title {
+.cat-title {
     border: 2px solid #f4f3ee;
     background-color: #f4f3ee;
-  }
+}
 
-  .opacity:hover {
+.opacity:hover {
     opacity: 0.5;
-  }
+}
 
+.btn-border {
+    border: none;
+}
 
 @media screen and (max-width: 1200px) {
     .child {
         width: 200px;
         height: 300px;
         margin-right: 35px;
-     }
+    }
 }
 
 @media screen and (max-width: 575px) {
@@ -585,13 +595,14 @@ body {
         font-size: xx-large;
         letter-spacing: 3px;
     }
+
     .account-container {
         width: 100%;
-      }
-    
-      .opacity:hover {
+    }
+
+    .opacity:hover {
         opacity: 1;
-      }
+    }
 }
 
 @media screen and (max-width: 340px) {
@@ -599,5 +610,5 @@ body {
         width: 180px;
         height: 280px;
         margin-right: 35px;
-     }
+    }
 }

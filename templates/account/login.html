@@ -15,34 +15,14 @@
     
 <div class="text-center">
     <h1 class="fontM logo-text comments-underline">{% trans "Sign In" %}</h1>
-
-    {% get_providers as socialaccount_providers %}
-
-    {% if socialaccount_providers %}
-    <p class="fontH">{% blocktrans with site.name as site_name %}Please sign in with one
-        of your existing third party accounts.<br>Or, <a class="fs-5 text-decoration-none fontM text-dark fw-bold" href="{{ signup_url }}"> &nbspSign Up&nbsp </a>
-        for a {{ site_name }} account and <b class="fs-5 fontM  fw-bold"> &nbspSign In&nbsp </b> below:{% endblocktrans %}</p>
-
-    <div class="socialaccount_ballot">
-
-        <div class="socialaccount_providers">
-            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-        </div>
-
-        <div class="login-or my-3"><b class="fs-5 fontM  fw-bold"> &nbsp{% trans 'OR' %}&nbsp </b></div>
-
-    </div>
-
-    {% include "socialaccount/snippets/login_extra.html" %}
-
-    {% else %}
-    <p class="fontM logo-text mt-5">{% blocktrans %}If you have not created an account yet, then please
-        <a href="{{ signup_url }}">Sign up</a> first.{% endblocktrans %}
+   
+    <p class="fontH fs-6 mt-4">{% blocktrans %}If you have not created an account yet, then please
+        <a class="fs-5 text-decoration-none fontM text-dark fw-bold" href="{{ signup_url }}">Sign up</a> first.{% endblocktrans %}
     </p>
-    {% endif %}
+   
 </div>
-<div class="row">
-    <div class="col-md-6 offset-md-3">
+<div class="row justify-content-center">
+    <div class="col-lg-5 col-md-6 ">
         <form class="login" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
             {{ form|crispy }}
@@ -51,9 +31,7 @@
             {% endif %}
             <div class="d-grid">
                 <button class="primaryAction mt-3 btn submitButton" type="submit">{% trans "Sign In" %}</button>
-                <!-- <br>
-                <a class="button secondaryAction tdarkext- text-center" href="{% url 'account_reset_password' %}">
-                    <b class="fs-5 fontM  fw-bold"> &nbsp{% trans "Forgot Password?" %}&nbsp </b></a> -->
+                
             </div>
         </form>
     </div>
