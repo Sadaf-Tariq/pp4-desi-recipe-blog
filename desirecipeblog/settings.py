@@ -32,7 +32,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-sadaf-tariq-pp4-desi-rec-hdfcz0pz20.us2.codeanyapp.com', 'pp4-desi-recipe-blog-04aed9a2aa93.herokuapp.com', 'localhost']
