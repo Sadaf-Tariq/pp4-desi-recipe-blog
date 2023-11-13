@@ -75,19 +75,35 @@
     <button class="left arrows" onclick="rightScroll()"><i class="fa-solid fa-arrow-left"></i></button>
    <div class="scroll-imagesCat">
         {% for category in model.category_list %}
-        {% with var=category.food_type %}
         <div class="child opacity">
             <a class="cat-text-decor" href="/category/{{ category }}">
-                <img src="{% static 'image/' %}{{ var }}.jpg" alt="">
+                {% if category.food_type == 'curry' %}
+                <img src="{% static 'image/category/curry.jpg' %}" alt="Food_type 'Curry' ">
+                {% endif %}
+                {% if category.food_type == 'kebab' %}
+                <img src="{% static 'image/category/kebab.jpg' %}" alt="Food_type 'Kebab' ">
+                {% endif %}
+                {% if category.food_type == 'paneer' %}
+                <img src="{% static 'image/category/paneer.jpg' %}" alt="Food_type 'Paneer' ">
+                {% endif %}
+                {% if category.food_type == 'bread' %}
+                <img src="{% static 'image/category/bread.jpg' %}" alt="Food_type 'Bread' ">
+                {% endif %}
+                {% if category.food_type == 'rice' %}
+                <img src="{% static 'image/category/rice.jpg' %}" alt="Food_type 'Rice' ">
+                {% endif %}
+                {% if category.food_type == 'sweet' %}
+                <img src="{% static 'image/category/sweet.jpg' %}" alt="Food_type 'Sweet' ">
+                {% endif %}
                     <div class="cat-title"><p class="fontM cat-p text-dark fw-bold"> {{ category.food_type }}</p></div>
-                    <!-- src="/static/image/Category/{{ category }}.jpg" -->
             </a>
         </div>
-        {% endwith %}
         {% endfor %}
    </div>
    <button class="right arrows" onclick="leftScroll()"><i class="fa-solid fa-arrow-right"></i></button>
 </div>
+
+
 
 
 <hr>
@@ -106,7 +122,24 @@
         {% for method in model.method_list %}
         <div class="child opacity">
             <a class="cat-text-decor" href="/method/{{ method }}">
-                <img src="{% static 'image/Method/' %}{{method}}.jpg" alt="">
+                {% if method.recipe_method == 'boiling' %}
+                <img src="{% static 'image/method/boiling.jpg' %}" alt="Method_type 'Boiling' ">
+                {% endif %}
+                {% if method.recipe_method == 'frying' %}
+                <img src="{% static 'image/method/frying.jpg' %}" alt="Method_type 'Frying' ">
+                {% endif %}
+                {% if method.recipe_method == 'grilling' %}
+                <img src="{% static 'image/method/grilling.jpg' %}" alt="Method_type 'Grilling' ">
+                {% endif %}
+                {% if method.recipe_method == 'slow-cooking' %}
+                <img src="{% static 'image/method/slow-cooking.jpg' %}" alt="Method_type 'slow-cooking' ">
+                {% endif %}
+                {% if method.recipe_method == 'stir-frying' %}
+                <img src="{% static 'image/method/stir-frying.jpg' %}" alt="Method_type 'stir-frying' ">
+                {% endif %}
+                {% if method.recipe_method == 'tadka' %}
+                <img src="{% static 'image/method/tadka.jpg' %}" alt="Method_type 'Tadka' ">
+                {% endif %}
                 <div class="cat-title"><p class="fontM cat-p text-dark fw-bold"> {{ method.recipe_method }}</p></div>
             </a>
         </div>
