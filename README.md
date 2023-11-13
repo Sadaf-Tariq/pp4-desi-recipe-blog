@@ -21,10 +21,22 @@ The website is interactive and responsive and also allows users to register them
 
 # Data
 ## Database Diagram
-![Database Diagram](/README_FILES/Database-Diagram.png)
+The Database diagram shows the relationship between the tables created by the model. The user custom table that was created by the custom model is shown 
+in the diagram as this was directly connected with the model.
 
+The 'Recipe' model is the main model which contains most of the details. The main purpose of the application is to display the recipe details and add new recipes,
+which is done by the recipe model. To filter the recipes by 'category' and 'method' I created two separate models 'RecipeCategory' and 'RecipeMethod'. This one-to-many relationship enables to create recipes with different methods and categories. 
 
-I used Lucid Charts to visualize the database schema.
+The application also allows the user to comment and rate the recipes. The 'Comment' and 'Rating' models allow the user to fulfill this task. The one-to-many relationship between these models allows the user to comment and rate multiple recipes. 
+
+I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema.
+
+![Database Diagram](/README_FILES/DatabaseDiagram.png)
+
+ ## User Custom Model
+
+ The user model is customized to take 'email' and 'password' rather than the built-in 'username' field. The email field is set to 'Unique' and the username is 
+ set to none. This data is used with the recipe and comment model as one-to-many relationships.
 
 # Features
 * The Header
