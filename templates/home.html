@@ -75,7 +75,7 @@
     <button class="left arrows" onclick="rightScroll()"><i class="fa-solid fa-arrow-left"></i></button>
    <div class="scroll-imagesCat">
         {% for category in model.category_list %}
-        {% with var=category %}
+        {% with var=category.food_type %}
         <div class="child opacity">
             <a class="cat-text-decor" href="/category/{{ category }}">
                 <img src="{% static 'image/' %}{{ var }}.jpg" alt="">
