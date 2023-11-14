@@ -38,6 +38,32 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
  The user model is customized to take 'email' and 'password' rather than the built-in 'username' field. The email field is set to 'Unique' and the username is 
  set to none. This custom user model is used with the recipe and comment model as one-to-many relationships.
 
+# User Experience
+#### User Stories
+|EPIC|User Stories|Role|Functionality|Benefit|MosCoW|
+|--------|------------|----|-------------|-------|------|
+|Authentication|Account Registration|As a **Site User** | I can register an account| so that I can publish a recipe, comment, like, and rate any recipe|Must-Have|
+|Authentication|Sign In|As a **Site User**| I can **sign in** with my email and password|so that I can publish a recipe, comment, like, and rate any recipe|Must-Have|
+|Authentication|Sign Out|As a **logged-in** user| I can log out of my account| so that no one can see my confidential information|Must-Have|
+|Administration|Approve comments|As a **Site Admin**| I can approve or disapprove comments | so that I can filter out any inappropriate content|Should-Have|
+|Administration|Manage posts|As a **Site Admin**| I can create, read, update, and delete posts| so that I can manage my blog content|Must-Have|
+|CRUD Functionality|Read full recipe|As a **Site User**|  I can click on a recipe card| so that I can read the full recipe|Must-Have|
+|CRUD Functionality|Add a recipe|As a **Site User**| I can add recipes| so that I can share my favourite recipes with othersMust-Have|
+|CRUD Functionality| Update recipes|As a **Site User**|  I can update my published recipes| so that I can add or correct information|Must-Have|
+|CRUD Functionality|Delete recipe|As a **Site User**|  I can delete my published| so that I can remove them from the recipe list|Must-Have|
+|CRUD Functionality| Recipe cards list|As a **Site User**|  I can view recipe cards on the home page| so that I can select one to read|Must-Have|
+|CRUD Functionality|View comments|As a **Site User/Admin**|I can view comments on an individual post| so that I can read the conversationn|Should-Have|
+|CRUD Functionality|Comment on recipe blogs|As a **Site User**| I can leave comments on a post| so that I can be involved in the conversation and ask questions|Should-Have|
+|CRUD Functionality|View ratings|As a **Site User**| I can view the average rating on each recipe blog| so that I can see which is the most popular or viral|Could-Have|
+|CRUD Functionality|Rate recipes|As a **Site User**| I can rate recipes| so that I can help other users choose the right content|Could-Have|
+|User features|Choose method|As a **Site User**| I can select the method| so that I can choose what type of recipe I want to see|Should-Have|
+|User features|Choose category|As a **Site User**| I can select the category| so that I can choose what type of recipe I want to see|Should-Have|
+|User features|View likes|As a **Site User/Admin**| I can view the number of likes on each recipe blog| so that I can see which is the most popular or viral|Should-Have|
+|User features|Like/Unlike|As a **Site User**| I can like or unlike a post| so that I can interact with the content|Should-Have|
+|User features|Footer social media links |As a **Site User**| I can click on social media links| so that I can stay updated by following the platform|Could-Have|
+
+
+
 # Features
 * The Header
 
@@ -277,13 +303,6 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
 # Testing
 
-* I tested the website on different browsers such as Microsoft Edge, Opera, Firefox, Chrome, and Safari and it works on all browser
-* I confirm that this project is responsive, functions on all standard screen sizes, tested responsiveness using the developer tools, and looks good 
-
-<img src="/images/responsive(1).png"  width="750" height="500"> <img src="/images/responsive(2).png"  width="300" height="500"> <img src="/images/responsive(3).png"  width="500" height="700">
-
-* I confirm that the header, navigation bar, highlights, footer, menu, and form text are all readable and easy to understand
-* I have confirmed that the form works: requires entries in every field, will only accept emails in an email field, and the submit button works
 
 # Bugs
 * When I tested my HTML code for the index.html page on html validator, I got the error that one of the div element was unclosed which was causing another section to give another error, I solved the problem by removing that div element
@@ -295,14 +314,7 @@ There is no unfixed bugs but there is a warning indicated by html validator for 
 ![Warning Image](/images/warning.png)
 
 # Validator Testing
-* HTML
-  * No errors were returned when passing through the official [W3C validator](https://validator.w3.org/)
-* CSS
-  * No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/)
-* Accessibility
-  * I confirmed that the colors and fonts chosen are easy to read and accessible by running it through lighthouse in developer tools
 
-    ![Lighthouse report](/images/lighthouse.png)
 
 # Deployment
 - The site was deployed to GitHub pages. The steps to deploy are as follows:
@@ -326,4 +338,4 @@ The live link can be found here - https://sadaf-tariq.github.io/pp1-everythingde
   * [w3schools](https://www.w3schools.com/), [StackOverflow](www.stackoverflow.com),  and Code Institute's walkthrough project [Love Running](https://github.com/Sadaf-Tariq/love-running) helped me so much throughout my project
 
 * Media
-  * The images used in the website were taken from [Pexels](https://www.pexels.com/)
+  * The images used in the website were taken from [Pexels](https://www.pexels.com/) and [pngTree](https://pngtree.com/)
