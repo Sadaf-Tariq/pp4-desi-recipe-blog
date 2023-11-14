@@ -57,7 +57,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
   * The navigation links for authenticated users are Home, Recipes, Create New Recipe, and Sign Out
 
-  * The navbar collapses when the screen size is smaller contains all the same links
+  * The navbar collapses when the screen size is smaller and contains all the same links
 
   * The navigation links make it easy for the user to find the different pages of the website and use the same color theme but a different font
 
@@ -117,9 +117,31 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
  
   * These cards help users see a list and make a decision about which recipe they want to explore more
 
-    ![Recipes Cards](/README_FILES/recipe-cards.png)
+    ![Recipes Cards](/README_FILES/recipes-recipe-card.png)
 
-​    
+​* Recipes with Food Category
+
+  * This page displays the filtered recipe with the selected category
+
+  * The page contains the recipe cards of the filtered recipes
+
+  * The recipe card contains the recipe image, average rating, cooking time, preparation time, method, category and number of servings
+ 
+  * These cards help users see a list and make a decision about which recipe they want to explore more
+
+    ![Food Method](/README_FILES/category.png)
+
+​* Recipes with Food Preparation Method
+
+  * This page displays the filtered recipe with the selected preparation method
+
+  * The page contains the recipe cards of the filtered recipes
+
+  * The recipe card contains the recipe image, average rating, cooking time, preparation time, method, category and number of servings
+ 
+  * These cards help users see a list and make a decision about which recipe they want to explore more
+
+    ![Food Method](/README_FILES/method.png)
 
 * Add recipe
 
@@ -127,7 +149,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
   * This page has a form which enables the user to input everything they need for a good recipe
  
-  * These inputs are then being saved to the database and added to the list of recipes
+  * These inputs are then saved to the database and added to the list of recipes
  
   * The forms fields are title, category , method, author_name, featured_iamge, ingredients, instructions, prep_time,
     cooking_time, servings and calories
@@ -137,25 +159,121 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
     ![Add Recipe](/README_FILES/add-recipe-form.png)
     ![Add Recipe button](/README_FILES/add_recipe_submit.png)
 
+* Full Recipe
+
+  * When the users click on the recipes cards on the home page or recipes page, the page redirects to a full recipe page
+ 
+  * This page contains all the information of that recipe in detail
+ 
+  * All the information from database title, category, method, author_name, featured_iamge, ingredients, instructions, prep_time,
+    cooking_time, servings, and calories are displayed
+    
+   ![Full Recipe header](/README_FILES/full-recipe-header.png)
+
+  * If the user is not logged in, they will not be able to like, rate, or comment
+
+   ![Like and rate for non-logged users](/README_FILES/like-rate-com.png)
+
+  * If the user is logged in, the options to like and rate will appear
+ 
+    ![Like and rate for logged-in users](/README_FILES/logged-in-like-rating-comments.png)
+
+  * The ingredients and Instruction section of the recipe is also available in detail
+    
+    ![Ingredients](/README_FILES/ingredients.png)![Instructions](/README_FILES/instructions.png)
+
+  * The list of comments from the database is available for all the users but a user cannot comment if not logged in
+
+     ![Comments not logged-in user](/README_FILES/comments.png)
+     ![Comments logged-in user](/README_FILES/comments_loggedin.png)
+ 
 * Edit Recipe
 
-  * The users who have created their own recipes will be able to delete or edit their own recipes
+  * The users who have created their own recipes will be able to edit their own recipes
 
-  * 
+  * When the user clicks the edit button a form with prepopulated fields will appear so that a user can update the recipe
+ 
+  *  There are two buttons available to 'Edit' or 'Cancel'
 
-  * The enquiry section has a form for the users to give all the relevant information about the enquiry they want to make. This form feature establishes a connection between the user and the site
+    ![Edit Recipe](/README_FILES/edit_Recipe.png)
+    ![Edit Recipe](/README_FILES/submit-edit-recipe.png)
 
-    ![The contact us page](/README_FILES/footer.png)
+* Delete Recipe
 
-  * When the user presses the submit with all the information, they are taken to a Thank you window, further, emphasizing interaction 
+  * The users who have created their own recipes will be able to delete their own recipes
 
-    ![Thank you window](/images/thankyou.png)
+  * When the user clicks the delete button, a confirmation message will appear to confirm the deletion process
+ 
+  *  There are two buttons available to 'Delete' or 'Cancel'
+
+    ![Delete REcipe](/README_FILES/delete-recipe.png)
+
+​* Authentication
+   I used the django-allauth package to implement authentication and the Custom User model. The user can sign up with an email address & password..
+
+  * **Sign In** process is straightforward, when the user clicks on the Log In link, the page will be redirected to a form
+
+  * The user will input an email address and password to complete the process
+
+    ![Sign-In](/README_FILES/sign-in.png)
+
+  * If the user is not already registered, they can opt to sign up
+
+  * **Sign Up** process is also straightforward, when the user clicks on the Sign Up link, the page will be redirected to a form
+
+  * The user will input an email address, password ans password(again) for confirmation and to complete the process
+
+    ![Sign-In](/README_FILES/sign-up.png)
+
+   * If the user decides to **Log Out**, the logout link from the nav bar lets the user to log out
+
+   * It redirects the user to a sign put page to confirm the process
+
+     ![Sign-Out](/README_FILES/sign-out.png)
+
+* 404
+
+  * A 404 page is available for the user to guide if the page requested is not available
+
+    ![404](/README_FILES/404.png)
+
+
+    
 # Technologies Used
 
 #### Languages Used
 
-* HTML5
-* CSS3
+- Python: Using the Django framework and other plugins to develop the app
+- HTML5
+- CSS3
+- JavaScript
+
+#### Frameworks, Libraries, and Packages
+
+- django: Full-stack Python Framework
+- Django-allauth: Django package for authentication
+- Crispy-forms: Django package for form management
+- Cloudinary: Cloud platform to host static and media file
+- Google Fonts: Text fonts
+- Summernote: JavaScript library to create WYSIWYG editors online
+- dj-database-url: Parses database URLs for Django.
+- gunicorn: Web server to run on Heroku.
+- psycopg2: Adapter for PostgreSQL Database.
+
+#### Hosting Platforms
+
+- Heroku: For deployment/production
+- ElephantSQL: For database
+- Cloudinary: For static/media files
+
+#### Other tools
+
+- [RealFaviconGenerator](https://favicon.io/): To generate favicons
+- Gitpod/Codeanywhere: For local development
+- Git & Github: For version control and deployment
+- Google Dev Tools: For testing and troubleshooting
+- DrawSql: For database model 
+- Random Key Generator: To generate a secret key.
 
 # Testing
 
