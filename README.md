@@ -243,8 +243,37 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
 #### Languages Used
 
-* HTML5
-* CSS3
+- Python: Using the Django framework and other plugins to develop the app
+- HTML5
+- CSS3
+- JavaScript
+
+#### Frameworks, Libraries, and Packages
+
+- django: Full-stack Python Framework
+- Django-allauth: Django package for authentication
+- Crispy-forms: Django package for form management
+- Cloudinary: Cloud platform to host static and media file
+- Google Fonts: Text fonts
+- Summernote: JavaScript library to create WYSIWYG editors online
+- dj-database-url: Parses database URLs for Django.
+- gunicorn: Web server to run on Heroku.
+- psycopg2: Adapter for PostgreSQL Database.
+
+#### Hosting Platforms
+
+- Heroku: For deployment/production
+- ElephantSQL: For database
+- Cloudinary: For static/media files
+
+#### Other tools
+
+- [RealFaviconGenerator](https://favicon.io/): To generate favicons
+- Gitpod/Codeanywhere: For local development
+- Git & Github: For version control and deployment
+- Google Dev Tools: For testing and troubleshooting
+- DrawSql: For database model 
+- Random Key Generator: To generate a secret key.
 
 # Testing
 
