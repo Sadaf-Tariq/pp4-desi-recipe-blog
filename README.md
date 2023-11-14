@@ -36,7 +36,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
  ## User Custom Model
 
  The user model is customized to take 'email' and 'password' rather than the built-in 'username' field. The email field is set to 'Unique' and the username is 
- set to none. This data is used with the recipe and comment model as one-to-many relationships.
+ set to none. This custom user model is used with the recipe and comment model as one-to-many relationships.
 
 # Features
 * The Header
