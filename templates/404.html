@@ -1,18 +1,15 @@
-{% extends "base.html" %} {% block additional_styles %}
-<style>
-  body {
-    background-color: rgb(225, 221, 221);
-  }
-</style>
-{% endblock %} {% block content %}
+{% extends "base.html" %} {% block content %}
 
-<div class="container mt-3" style="max-width: 33rem">
-  <div class="card text-bg-secondary text-center mb-3">
-    <div class="card-body">
-      <h4 class="card-title welcome">Ooops!</h4>
-      <p class="card-text">I cannot find what you are looking for...</p>
-      <p class="card-text">The button below will take you back!</p>
-      <a href="{% url 'home' %}" class="btn btn-danger back">Back</a>
+<div class="container">
+<div class="row justify-content-center">
+    <div class="col-lg-6 background-image-delete">
+      <h4 class="fontM logo-text text-center mt-5">Ooops!</h4>
+      <p class="card-text fs-5 fontH text-center mt-5">The page you are looking for is not available!</p>
+      <p class="card-text fs-5 fontH text-center">The button below will take you back!</p>
+      <div class="w-100 text-center">
+        <a href="{% url 'home' %}" class="btn submitButton mt-3">Back</a>
+      </div>
+      
     </div>
   </div>
 </div>
