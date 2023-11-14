@@ -39,7 +39,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
  set to none. This custom user model is used with the recipe and comment model as one-to-many relationships.
 
 # User Experience
-#### User Stories
+### User Stories
 |EPIC|User Stories|Role|Functionality|Benefit|MosCoW|
 |--------|------------|----|-------------|-------|------|
 |Authentication|Account Registration|As a **Site User** | I can register an account| so that I can publish a recipe, comment, like, and rate any recipe|Must-Have|
@@ -62,7 +62,13 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 |User features|Like/Unlike|As a **Site User**| I can like or unlike a post| so that I can interact with the content|Should-Have|
 |User features|Footer social media links |As a **Site User**| I can click on social media links| so that I can stay updated by following the platform|Could-Have|
 
+[Acceptance Criteria and Tasks](https://github.com/users/Sadaf-Tariq/projects/2)
 
+### WireFrames
+Wireframes are created on [Balsamiq](https://balsamiq.cloud/)
+[Home Wireframe](/README_FILES/wirefram1.png)
+[Recipe list Wireframe](/README_FILES/wirefram2.png)
+[Add recipe Wireframe](/README_FILES/wirefram23.png)
 
 # Features
 * The Header
