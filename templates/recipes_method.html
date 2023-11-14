@@ -57,15 +57,26 @@
 
             </div>
         </div>
-        {% if forloop.counter|divisibleby:4 %}
-    </div>
-    <div class="row">
+        {% empty %}
+        <p class="mt-4 fontH fs-4 mt-5">There are no recipes in this method yet. Do you want to share your favorite recipe?
+        </p>
+        {% if user.is_authenticated%}
+        <p class="mb-4 fontH mt-4 fs-4">Click here to add a new recipe: <a href="{% url 'new_recipe' %}"
+                class="fontM text-decoration-none text-black">
+                <strong>Create New Recipe</strong></a></p>
+        {% else %}
+        <p class="fontH fs-5 mt-3">You are not Logged in, Click here to:
+            <a href="{% url 'account_login' %}" class="text-decoration-none text-black fontM"><strong class="fs-4">Sign
+                    in</strong></a>
+        </p>
+        <p class="fontH fontH fs-5 mt-3">Haven't created an account yet? Click here to:
+            <a href="{% url 'account_signup' %}" class="text-decoration-none text-black fontM"><strong class="fs-4">Sign
+                    up</strong></a>
+        </p>
         {% endif %}
         {% endfor %}
 
     </div>
-
-
 <div>
     {% if is_paginated %}
     <nav aria-label="Page navigation">
