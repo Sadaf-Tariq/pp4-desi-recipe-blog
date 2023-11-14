@@ -43,81 +43,109 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
   * Featured at the top of the page, the header shows the logo of the website at the right of the right corner: everything DESI that links to the home page
 
-  * The logo image is present at the left corner of the header that also links to the home page
+  * The logo image is present at the left corner of the header and also links to the home page
 
   * The header clearly shows the name of the website with a font easy to understand and a color that contrasts with the background
 
-    ![Header Image](/images/header.png)
+    ![Header](/README_FILES/header-logo.png)
 
 * Navigation
 
   * Featured after the header, it contains the navigation links for the website present at the center of the navigation bar
 
-  * The navigation links are: Home, Menu, Gallery and contact us that links to the different pages of the website
+  * The navigation links are: Home, Recipes, Sign Up, and Log In for unauthenticated users, which link to the different pages of the website
 
-  * The navigation links make it easy for the user to find the different pages of the website and use the same color theme but different font
+  * The navigation links for authenticated users are Home, Recipes, Create New Recipe, and Sign Out
 
-    ![Navigation Bar](/images/navigationbar.png)
+  * The navbar collapses when the screen size is smaller contains all the same links
 
-* Main Image and Banner
+  * The navigation links make it easy for the user to find the different pages of the website and use the same color theme but a different font
 
-  * This section of the page provides us with a delicate photograph of biryani in a dish, surrounded by spices. The image with an eyecatching animation lets the user envision that the goal of the website is desi food industry oriented
+    ![Navigation Bar for unauthenticated User](/README_FILES/navbar.png)
+    ![Navigation Bar for authenticated User](/README_FILES/logged-in-navbar.png)
+    ![Collapsible navigation Bar ](/README_FILES/collapsible-navbar.png)
 
-  * The main image also contains a banner with a semi-transparent background of the same color theme
 
-  * The cover image on the banner sums up the tone and premise of the website and strengthens the User's memory of the brand itself
+* Recipe Cards
 
-    ![Main image and banner](/images/main-image.png)
+  * The recipe card lists are shown after the nav bar, these are the recipes that are already available in the database created by users and the admin
+ 
+  * These cards contain the recipe image, average rating, number of likes, and number of comments
+ 
+  * These cards help users see a list and make a decision about which recipe they want to explore more
 
-* The Kitchen
+    ![Recipe Cards](/README_FILES/recipe-cards.png)
 
-  * This section of the page contains a brief description of what happens inside the kitchen to make the user feel trusted
+* Food Category Options
 
-    ![The kitchen](/images/kitchen.png)
+  * After the recipe cards, there is a scroll list of food categories available for users
 
-* The Highlight
+  * Each category filters a list of recipes of that category and makes it easy for the users
 
-  * The highlight section gives the detail of everything DESI's specialty, this section ensures that the user do not loose their interest
+  * There are arrow buttons available on each side for the user to see the full list of categories
 
-    ![our speciality](/images/highlight.png)
+    ![Food Category](/README_FILES/food-category.png)
+
+   
+* Food Method Options
+
+  * After the categories option, there is a scroll list of food methods available for users
+
+  * Each method filters a list of recipes of that method and makes it easy for the users
+
+  * There are arrow buttons available on each side for the user to see the full list of methods
+
+    ![Food Method](/README_FILES/food-method.png)
 
 * The Footer
 
-  * The footer section encourages the user to keep in contact and provides a phone number, and street address where they can be found
+  * The footer section encourages the user to keep in contact and updated
 
-  * The footer section also includes social media icons so that users can find the catering service on Facebook, Twitter, Youtube, and Instagram
+  * The footer section includes social media icons so that users can find the blogging page on Facebook, Twitter, YouTube, and Instagram
 
-  * The  contact information on the footer section is valuable to users as it helps them to find or contact them if they need to
+  * The information on the footer section is valuable to the users as it helps them to find or see any updates if available
 
-    ![The footer](/images/footer.png)
+    ![The footer](/README_FILES/footer.png)
 
-* Menu Page
+* Recipes Page
 
-  * The menu link on the navigation bar links the age to the Menu page, where a detailed menu is available for users to help them to find the right desi food they want to order for their important event
+  * The recipes page is available for all the users 
 
-  * It is the most important premise of the website as the majority of the users will be interested in this page hence why there is a separate page dedicated to this section and made in detail with a beautiful food background with the white font to ease accessibility
+  * The page contains a detailed list of recipe cards and has all the recipes available in the database
+ 
+  * The recipe card contains the recipe image, average rating, cooking time, preparation time, method, category and number of servings
+ 
+  * These cards help users see a list and make a decision about which recipe they want to explore more
 
-    ![The menu](/images/menu.png)
+    ![Recipes Cards](/README_FILES/recipe-cards.png)
 
 ​    
 
-* The Gallery
+* Add recipe
 
-  * The gallery link on the navigation bar takes the user to the gallery page where there are images available for the users 
+  * The users who are logged in will have the opportunity to add their favorite recipe by using the 'Create New Recipe' page
 
-  * The gallery images of food served by everything DESI and their catering service give a clear picture to users to make an informed decision
+  * This page has a form which enables the user to input everything they need for a good recipe
+ 
+  * These inputs are then being saved to the database and added to the list of recipes
+ 
+  * The forms fields are title, category , method, author_name, featured_iamge, ingredients, instructions, prep_time,
+    cooking_time, servings and calories
+ 
+  * There are two buttons available to 'Add' or 'Cancel'
 
-    ![The gallery](/images/gallery.png)
+    ![Add Recipe](/README_FILES/add-recipe-form.png)
+    ![Add Recipe button](/README_FILES/add_recipe_submit.png)
 
-* The Contact-us Page
+* Edit Recipe
 
-  * The contact-us link on the navigation bar takes the user to the Contact us page, which consists of two sections. The contact section encourages the user to keep in contact and provides a phone number, email address, and street address where they can be found
+  * The users who have created their own recipes will be able to delete or edit their own recipes
 
-  * It also includes information about its opening to help the users to know when they should be contacted
+  * 
 
   * The enquiry section has a form for the users to give all the relevant information about the enquiry they want to make. This form feature establishes a connection between the user and the site
 
-    ![The contact us page](/images/contact.png)
+    ![The contact us page](/README_FILES/footer.png)
 
   * When the user presses the submit with all the information, they are taken to a Thank you window, further, emphasizing interaction 
 
