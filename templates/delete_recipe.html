@@ -5,14 +5,14 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6 offset-lg-2 background-image-delete">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 background-image-delete">
             <form  method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h1 class="delete-p fontH text-center">Are you sure you want to delete <strong>{{ recipe.title }}</strong>?</h1>
                 <div class="text-center">
-                    <input id="submitButton" class="btn btn-signup btn-lg" type="submit" value="Delete">
-                <a href="{% url 'home' %}" id="submitButtonCancel" class="btn btn-signup btn-lg">Cancel</a>
+                    <input class="btn submitButton fontH mt-4" type="submit" value="Delete">
+                <a href="{% url 'home' %}"  class="btn submitButton fontH mt-4">Cancel</a>
                 </div>
             </form>
         </div>
