@@ -7,14 +7,12 @@
 6. [Technologies Used](#Technologies-Used)
 7. [Agile Methodology](#Agile-Methodology)
 8. [Testing](#Testing)
-10. [Bugs](#Bugs)
-11. [Unfixed bugs](#Unfixed-Bugs)
 12. [Deployment](#Deployment)
 13. [Credits](#Credits)
 
 # About everything DESI
 everythingDESI is a recipe blog web application, for people who love desi food. This website provides a platform for desi food lovers to share 
-their favorite food recipes, share their opinions, like, and give ratings to help others to try the best ones available.
+their favorite food recipes, share their opinions, like, and give ratings to help others try the best ones available.
 
 The website is interactive and responsive and also allows users to register themselves. 
 ![Responsive image](/README_FILES/respponsive.png)
@@ -327,6 +325,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 - Python: Using the Django framework and other plugins to develop the app
 - HTML5
 - CSS3
+- Bootstrap5
 - JavaScript
 
 #### Frameworks, Libraries, and Packages
@@ -358,41 +357,164 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
 # Testing
 
- * 
-
-
-# Bugs
-* When I tested my HTML code for the index.html page on html validator, I got the error that one of the div element was unclosed which was causing another section to give another error, I solved the problem by removing that div element
-* Another error I found for the menu.html page, where I put an anchor element inside a button element, I solved that error by replacing the button to form 
-* For the style.css for the header element in a media query, I got an error because there was a margin selector that had a negative value, I solved that error by removing that selector
-
-# Unfixed Bugs
-There is no unfixed bugs but there is a warning indicated by html validator for gallery.html page of the website, for my design I do not need any header for this section of the page that is why this warning was not entertained
-![Warning Image](/images/warning.png)
-
-# Validator Testing
-
+ * Testing document can be found in [TESTING.md](https://github.com/Sadaf-Tariq/pp4-desi-recipe-blog/blob/main/TESTING.md)
 
 # Deployment
-- The site was deployed to GitHub pages. The steps to deploy are as follows:
-  - In the GitHub repository, navigate to the Settings tab
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+* The projects is deployed on **Heorku**, the database used is **ElephantSQL** and static/media files are hosted by **Cloudinary**
+  
+#### Installing Django and supporting libraries
+- Install Gunicorn(django server for heroku): pip3 install 'django<4' gunicorn
 
-The live link can be found here - https://sadaf-tariq.github.io/pp1-everythingdesi/
+- Install dj_database_url and pyscopg2(connect to PostegreSQL): pip3 install dj_database_url==0.5.0 psycopg2
+
+- Install Cloudinary (Static/media hosting cloud platform): pip3 install dj3-Cloudinary-storage, pip3 install urllib3==1.26.15
+
+- Install summernote (online editor): pip3 install summernote
+
+
+#### Create App
+- Create Project -> django-admin startproject PROJ_NAME . 
+
+- Create App -> python3 manage.py startapp APP_NAME
+
+- Add App to installed apps in settings.py:
+
+            INSTALLED_APPS = [
+              ...
+              'APP_NAME',
+            ]
+             
+#### Create an external database
+- Navigate to ElephantSQL.com and create a free account
+
+- Create an instance using the free plan(free turtle) with the instance name and region.
+
+- Get the database URL from the instance info page
+
+- Migrate the database
+  
+- In settings.py, add
+- 
+  import dj_database_url
+  
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL', ''))
+    }
+  and comment out: 
+    DATABASES = {
+            'default': {
+                'ENGINE': 'Django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
+
+#### Create the Heroku app
+* Sign up for Heroku 
+
+* Click the "Create a new app" button.
+
+* Give your app a name and select the region 
+
+ #### Django secret key
+ 
+* Create a django secret key from [Secret Key Generator](https://miniwebtool.com/django-secret-key-generator/)
+
+#### Create an env.py file
+- Create an env.py file, the file should be added to .gitignore file
+- Import os library: **import os**
+
+- Set environment variables:
+
+   - DATABASE_URL  ElephantSQL URL from the instance : os.environ["DATABASE_URL"]="<copiedURL>
+   - SECRET_KEY: os.environ["SECRET_KEY"] = "randomSecretKey" (from key generator)
+
+#### Update settings.py
+    import os
+    import dj_database_url
+    if os.path.isfile('env.py'):
+        import env
+
+  SECRET_KEY = os.environ.get('SECRET_KEY')
+
+- Save all files and make migrations: python3 manage.py makemigrations
+  then migrate: python3 manage.py migrate
+
+- Update heroku config Values
+
+  |Key|Values|
+  |---|------|
+  |PORT|8000|
+  |SECRET_KEY|randomsecretkey|
+  |DATABASE_URL|Elephant_SQL URL|
+  |DISABLE_COLLECTSTATIC|1(to prevent Heroku form collecting static files|
+
+
+#### Update setting.py for static and media files
+
+- Create a Cloudinary account from [Cloudinary](cloudinary.com)
+
+- Copy the URL from Cloudinary dashboard.
+
+- Update env.py
+  os.environ["CLOUDIANRY_URL"] = "Cloudinary URL from dashboard(remove CLOUDINARY_URL in the beginning)"
+
+- Add a new Config Var in Heroku with the KEY CLOUDINARY_URL, and the same value(URL) 
+
+- Tell Django to use Cloudinary to store media and static files:
+
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+- Update template directory
+
+TEMPLATES = [
+{
+  ...,
+  'DIRS': [TEMPLATES_DIR],
+  ...,
+      ],
+    },
+  },
+]
+
+- Add Heroku Hostname to ALLOWED_HOSTS
+- 
+ALLOWED_HOSTS = ['app-name.herokuapp.com', 'localhost']
+
+- Create a Profile
+  
+  web: gunicorn whatscooking.wsgi
+
+- commit and push changes to GitHub
+  
+- Under the deploy section of Heroku, deploy the project using GitHub
+
+- Remove DISABLE_COLLECSTATIC = 1 from Heroku config vars, before final deployment when the the static files are ready to be collected
+
 
 # Credits
 * Content
-  * [Font awesome](https://fontawesome.com/) provided the icon for my header and cover text on the hero-image element
-  * [w3schools](https://www.w3schools.com/) helped me in creating my form
-  * [w3schools](https://www.w3schools.com/) helped me in creating my button for the menu page
-  * [StackOverflow](www.stackoverflow.com) helped me to create a custom bottom border on the speciality section heading
-  * [StackOverflow](www.stackoverflow.com) helped me to remove the error I was getting for an anchor element inside the button element
-  * The code for the social media link for the footer was taken from Code Institute [Love Running](https://github.com/Sadaf-Tariq/love-running/blob/main/index.html) project
-  * The text for the home page was taken from [Wikipedia](www.wikipedia .com) and some open-source sites
+  * [Font awesome](https://fontawesome.com/) provided the icon for my header, like, comment, rating and arrows
+  * [w3schools](https://www.w3schools.com/) helped me in creating collapsible navbar
+  * [Medium](https://medium.com/geekculture/django-implementing-star-rating-e1deff03bb1c) helped me creating rating(reviews)
+  * [Medium](https://medium.com/@ksarthak4ever/django-custom-user-model-allauth-for-oauth-20c84888c318) helped me custom user model for authentication
+  * [StackOverflow](www.stackoverflow.com) helped me to create multiple queryset in a view
+  * [StackOverflow](www.stackoverflow.com) helped me to test using custom user model
+  * [StackOverflow](www.stackoverflow.com) helped me to create custom summernote editor
+  * Filter list_view for category and method were helped by the [github](https://github.com/veryacademy/YT-Django-Simple-Blog-App-Part3-SimpleCategories/blob/master/blog/views.py)
+  * [ProgrammingBasic](https://www.programmingbasic.com/horizontal-scrolling-div-with-arrows) helped me to create an arrow scroll list
+  * [OpenclassRooms](https://openclassrooms.com/en/courses/7107341-intermediate-django/7264795-include-multiple-forms-on-a-page)helped to create and sub,it 
+     multiple forms on a page
   * The logo image for the website was taken from [Wix](www.wix.com)
-  * I got the inspiration for the website from Zouq restaurant, Koyla restaurant, and David Smyth Catering
-  * [w3schools](https://www.w3schools.com/), [StackOverflow](www.stackoverflow.com),  and Code Institute's walkthrough project [Love Running](https://github.com/Sadaf-Tariq/love-running) helped me so much throughout my project
+  * I got the inspiration for the website from [pinchOfyum](https://pinchofyum.com/)
+  * [w3schools](https://www.w3schools.com/), [StackOverflow](www.stackoverflow.com),  and Code Institute's walkthrough projects helped me so much throughout my project
+  * Special thanks to Martin from tutor support for resolving a test error
 
 * Media
   * The images used in the website were taken from [Pexels](https://www.pexels.com/) and [pngTree](https://pngtree.com/)
