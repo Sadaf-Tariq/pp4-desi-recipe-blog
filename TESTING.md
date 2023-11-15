@@ -5,8 +5,6 @@
 4. [Responsiveness and Browser Compatibility](#Responsiveness-and-Browser-Compatibility)
 5. [Automated Testing](#Automated-Testing)
 6. [Manual Testing](#Manual-Testing)
-7. [Fixed Bugs](#Fixed-Bugs)
-8. [Known Bugs](#Knows-Bugs)
 
 
 # Validator Testing
@@ -194,6 +192,55 @@ I used [CI Python Linter](https://pep8ci.herokuapp.com/) for python code validat
 
     <img src="/README_FILES/recipeblog-testmodels.png" alt="user app tests.py file" width="500" height="130" />
 
+# Manual Testing
+
+
+  |Feature|Action|Expected Result|Result|
+  |-------|------|---------------|------|
+  |Logo|When the user clicks on logo|the logo redirects to home page|Pass|
+  |Header text|When the user clicks on header text|The text redirects to home page|Pass|
+  |Navbar links|when the user click on any link|The link redirects to corresponding pages|Pass|
+  |Recipe Cards|When the user hover on recipe card|The card changes its color to be prominent|Pass|
+  |Recipe Cards|When the user click on a recipe card|The card redirects to the corresponding full recipe page|Pass|
+  |Food Category Cards|When the user hover on recipe card|The card changes its color to be prominent|Pass|
+  |Food Category Cards|Whe the user click on a recipe card|The card redirects to the corresponding recipe category page|Pass|
+  |Food Method Cards|When the user hover on recipe card|The card changes its color to be prominent|Pass|
+  |Food Method Cards|Whe the user click on a recipe card|The card redirects to the corresponding recipe method page|Pass|
+  |All recipe page recipe Cards|When the user hover on recipe card|The card changes its color to be prominent|Pass|
+  |All recipe page recipe Cards|Whe the user click on a recipe card|The card redirects to the corresponding recipe method page|Pass|
+  |Create recipe page for logged-in user|When the user tries to add a recipe|The page should display a form to add a recipe with add/cancel button|Pass|
+  |Recipe submission|When the user submits a recipe|A success message should be displayed and the added recipe should be visible on home/allrecipes page|Pass|
+  |Add recipe cancel button|When the user clicks cancel button|The recipe should not be added and redirects to add recipe page|Pass|
+  |Update recipe page for recipe authors|When the author tries to update a recipe|The page should display a form with prepopulated fields to update a recipe with update/cancel button|Pass|
+  |Updated recipe submission|When the user submits an updated recipe|A success message should be displayed and the added recipe should be visible on home/allrecipes page|Pass|
+  |Update recipe cancel button|When the user clicks cancel button|The recipe should not be updated and redirects to home page|Pass|
+  |Delete recipe page for author|When the author tries to delete a recipe|The page should display a page to delete a recipe and delete/cancel button|Pass|
+  |Recipedeletion|When the author deletes a recipe|A success message should be displayed and the deleted recipe should not be visible on home/allrecipes page|Pass|
+  |Delete recipe cancel button|When the user clicks cancel button|The recipe should not be deleted and redirects to the home page|Pass|
+  |Log In|When a user clicks on log in link|A form with email and password should be displayed|Pass|
+  |Log In|When a user clicks on log in link|A success message should be displayed to the user|Pass|
+  |Sign Up|When a user clicks on Sign Up link|A form with email and password and password(again) should be displayed|Pass|
+  |Sign Up|When a user clicks on Sign Up link|A success message should be displayed to the user|Pass|
+  |Log Out|When a user clicks on log out link|A confirmation page should be displayed|Pass|
+  |Log Out|When a user clicks on log out link|A success message should be displayed to the user|Pass|
+
+  - Success messages
+
+    <img src="/README_FILES/delete_message.png" alt="delete success message" width="" height="" />
+    
+    <img src="/README_FILES/add_message.png" alt="add recipe success message" width="" height="" />
+
+    <img src="/README_FILES/update_message.png" alt="update success message" width="" height="" />
+
+    <img src="/README_FILES/sign-in.png" alt="sign in success message" width="" height="" />
+
+    <img src="/README_FILES/sign-out.png" alt="sign out success message" width="" height="" />
+
+    
+
+  
+  
+  
 
 
 
