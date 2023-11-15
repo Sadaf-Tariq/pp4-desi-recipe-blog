@@ -305,11 +305,11 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
     <img src="/README_FILES/sign-up.png" alt="Sign-Up" width="550" height="450"/>
 
-   * If the user decides to **Log Out**, the logout link from the nav bar lets the user to log out
+   * If the user decides to **Log Out**, the logout link from the nav bar lets the user log out
 
    * It redirects the user to a sign put page to confirm the process
 
-    <img src="/README_FILES/sign-out.png" alt="Sign-out" width="550" height="450"/>
+     <img src="/README_FILES/sign-out.png" alt="Sign-out" width="550" height="450"/>
      
 * 404
 
