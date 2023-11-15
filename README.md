@@ -366,7 +366,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
  * Testing document can be found in [TESTING.md](https://github.com/Sadaf-Tariq/pp4-desi-recipe-blog/blob/main/TESTING.md)
 
 # Deployment
-* The projects is deployed on **Heorku**, the database used is **ElephantSQL** and static/media files are hosted by **Cloudinary**
+* The projects is deployed on **Heroku**, the database used is **ElephantSQL** and static/media files are hosted by **Cloudinary**
   
 #### Installing Django and supporting libraries
 - Install Gunicorn(django server for heroku): pip3 install 'django<4' gunicorn
@@ -399,14 +399,18 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
 - Migrate the database
   
-- In settings.py, add
-- 
+- In settings.py
+  
+  add
+
   import dj_database_url
   
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL', ''))
     }
-  and comment out: 
+  
+  and comment out:
+  
     DATABASES = {
             'default': {
                 'ENGINE': 'Django.db.backends.sqlite3',
@@ -452,7 +456,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
   |PORT|8000|
   |SECRET_KEY|randomsecretkey|
   |DATABASE_URL|Elephant_SQL URL|
-  |DISABLE_COLLECTSTATIC|1(to prevent Heroku form collecting static files|
+  |DISABLE_COLLECTSTATIC|1(to prevent Heroku form collecting static files)|
 
 
 #### Update setting.py for static and media files
@@ -466,38 +470,37 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
 - Add a new Config Var in Heroku with the KEY CLOUDINARY_URL, and the same value(URL) 
 
-- Tell Django to use Cloudinary to store media and static files:
+- Tell Django to use Cloudinary to store media and static files and Update template directory:
 
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+       STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+       STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+       STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+       
+       MEDIA_URL = '/media/'
+       DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+       
+       TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-MEDIA_URL = '/media/'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+        TEMPLATES = [
+               {
+                 ...,
+                 'DIRS': [TEMPLATES_DIR],
+                 ...,
+                     ],
+                   },
+                 },
+               ]
 
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-
-- Update template directory
-
-TEMPLATES = [
-{
-  ...,
-  'DIRS': [TEMPLATES_DIR],
-  ...,
-      ],
-    },
-  },
-]
 
 - Add Heroku Hostname to ALLOWED_HOSTS
-- 
-ALLOWED_HOSTS = ['app-name.herokuapp.com', 'localhost']
+  
+  ALLOWED_HOSTS = ['app-name.herokuapp.com', 'localhost']
 
 - Create a Profile
   
   web: gunicorn whatscooking.wsgi
 
-- commit and push changes to GitHub
+- Commit and push changes to GitHub
   
 - Under the deploy section of Heroku, deploy the project using GitHub
 
