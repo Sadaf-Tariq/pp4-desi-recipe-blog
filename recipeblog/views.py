@@ -205,5 +205,5 @@ class DeleteRecipe(DeleteView):
     def form_valid(self, form):
         form.instance.author_email = self.request.user
         messages.add_message(self.request, messages.SUCCESS,
-                             "Your recipe has been updated successfully.")
+                             "Your recipe has been deleted successfully.")
         return super().form_valid(form)

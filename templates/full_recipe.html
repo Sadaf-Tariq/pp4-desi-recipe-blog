@@ -109,7 +109,7 @@
                             {% csrf_token %}
                       </div>
                         <div class="col-lg-1 col-sm-3 col-3 g-0 ">
-                            <button type="submit" class="btn submitButton fontH " ><i class="fa fa-star"></i></button>
+                            <button type="submit" class="btn submitButton text-black fontH " aria-label="rating" ><i class="fa fa-star"></i></button>
                         </div>
                 </div> 
             </form> 
@@ -188,7 +188,7 @@
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button type="submit" class="btn mt-4 submitButton fontH">Submit</button>
+                    <button type="submit" class="btn mt-4 submitButton fw-bold text-black fontH">Submit</button>
                 </form>
                 {% else %}
                 <h3 class="fontM fw-bold comments-underline">Log in to leave a comment</h3>

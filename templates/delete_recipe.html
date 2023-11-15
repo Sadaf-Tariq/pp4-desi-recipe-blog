@@ -11,8 +11,8 @@
                 {% csrf_token %}
                 <h1 class="delete-p fontH text-center">Are you sure you want to delete <strong>{{ recipe.title }}</strong>?</h1>
                 <div class="text-center">
-                    <input class="btn submitButton fontH mt-4" type="submit" value="Delete">
-                <a href="{% url 'home' %}"  class="btn submitButton fontH mt-4">Cancel</a>
+                    <input class="btn submitButton fw-bold text-black fontH mt-4" type="submit" value="Delete">
+                <a href="{% url 'home' %}"  class="btn submitButton fw-bold text-black fontH mt-4">Cancel</a>
                 </div>
             </form>
         </div>
