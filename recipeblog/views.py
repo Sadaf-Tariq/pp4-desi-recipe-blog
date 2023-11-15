@@ -9,7 +9,9 @@ from django.urls import reverse_lazy
 
 
 class HomeView(generic.ListView):
-
+    """
+    Renders all objects of Recipe, RecipeCategory and RecipeMethod model as a list
+    """
     context_object_name = "model"
     template_name = "home.html"
     paginated_by = 6
@@ -34,6 +36,9 @@ class RecipeList(generic.ListView):
 
 
 class FullRecipe(View):
+    """
+    Renders full recipe template 
+    """
 
     commented = False
 
@@ -131,9 +136,7 @@ class FullRecipe(View):
 
 def recipe_like(request, slug, *args, **kwargs):
     """
-    The view to update the likes. Although it should always be
-    called using the POST method, we have still added some
-    defensive programming to make sure.
+    The view to update the likes. 
     """
     post = get_object_or_404(Recipe, slug=slug)
 
@@ -147,6 +150,9 @@ def recipe_like(request, slug, *args, **kwargs):
 
 
 class RecipeCatListView(generic.ListView):
+    """
+    View to filter recipes by category
+    """
     template_name = 'recipes_category.html'
     context_object_name = 'catlist'
 
@@ -160,6 +166,9 @@ class RecipeCatListView(generic.ListView):
 
 
 class RecipeMethodListView(generic.ListView):
+    """
+    View to filter recipes by method
+    """
     template_name = 'recipes_method.html'
     context_object_name = 'methodlist'
 
@@ -173,6 +182,9 @@ class RecipeMethodListView(generic.ListView):
 
 
 class CreateNewRecipe(CreateView):
+    """
+    View to create a new recipe
+    """
     model = Recipe
     template_name = "create_new_recipe.html"
     form_class = RecipeForm
@@ -188,6 +200,9 @@ class CreateNewRecipe(CreateView):
 
 
 class EditRecipe(UpdateView):
+    """
+    View to edit a recipe
+    """
     model = Recipe
     template_name = "edit_recipe.html"
     form_class = RecipeForm
@@ -202,6 +217,9 @@ class EditRecipe(UpdateView):
 
 
 class DeleteRecipe(DeleteView):
+    """
+    View to delete a recipe
+    """
     model = Recipe
     template_name = "delete_recipe.html"
     form_class = RecipeForm
