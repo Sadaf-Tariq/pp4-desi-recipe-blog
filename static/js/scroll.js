@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 function leftScroll() {
     const left = document.querySelector(".scroll-imagesCat");
     left.scrollBy(200, 0);

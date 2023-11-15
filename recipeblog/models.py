@@ -106,8 +106,10 @@ class Rating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    rating = models.FloatField(blank=False, default=0,
-                               validators=[field_validation, MaxValueValidator(5.0)])
+    rating = models.FloatField(
+        blank=False,
+        default=0,
+        validators=[field_validation, MaxValueValidator(5.0)])
 
     def __str__(self):
         return f"{self.recipe.title}: {self.rating}"

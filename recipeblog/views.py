@@ -89,7 +89,8 @@ class FullRecipe(View):
                 rating = rating_form.save(commit=False)
                 rating.recipe = recipe
                 rating.save()
-                return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
+                url = HttpResponseRedirect(reverse('full_recipe', args=[slug]))
+                return url
             else:
                 counts = recipe.comments.filter(
                     email=request.user, recipe=recipe).count()
@@ -107,7 +108,8 @@ class FullRecipe(View):
                 comment = comment_form.save(commit=False)
                 comment.recipe = recipe
                 comment.save()
-                return HttpResponseRedirect(reverse('full_recipe', args=[slug]))
+                url = HttpResponseRedirect(reverse('full_recipe', args=[slug]))
+                return url
             else:
                 comment_form = CommentForm()
         else:
@@ -151,7 +153,8 @@ class RecipeCatListView(generic.ListView):
     def get_queryset(self):
         content = {
             'cat': self.kwargs['category'],
-            'recipes': Recipe.objects.filter(category__food_type=self.kwargs['category'])
+            'recipes': Recipe.objects.filter
+            (category__food_type=self.kwargs['category'])
         }
         return content
 
@@ -161,9 +164,10 @@ class RecipeMethodListView(generic.ListView):
     context_object_name = 'methodlist'
 
     def get_queryset(self):
+        id = Recipe.objects.filter(method__recipe_method=self.kwargs['method'])
         content = {
             'method': self.kwargs['method'],
-            'recipes': Recipe.objects.filter(method__recipe_method=self.kwargs['method'])
+            'recipes': id,
         }
         return content
 
@@ -172,7 +176,7 @@ class CreateNewRecipe(CreateView):
     model = Recipe
     template_name = "create_new_recipe.html"
     form_class = RecipeForm
-    success_url = reverse_lazy('new_recipe')
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -190,6 +194,7 @@ class EditRecipe(UpdateView):
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
+        obj = form.save(commit=False)
         form.instance.author_email = self.request.user
         messages.add_message(self.request, messages.SUCCESS,
                              "Your recipe has been updated successfully.")
@@ -201,9 +206,8 @@ class DeleteRecipe(DeleteView):
     template_name = "delete_recipe.html"
     form_class = RecipeForm
     success_url = reverse_lazy('home')
+    success_message = "Your recipe has been deleted successfully"
 
-    def form_valid(self, form):
-        form.instance.author_email = self.request.user
-        messages.add_message(self.request, messages.SUCCESS,
-                             "Your recipe has been deleted successfully.")
-        return super().form_valid(form)
+    def delete(self, request, *args, **kwargs):
+        messages.warning(self.request, self.success_message)
+        return super(DeleteRecipe, self).delete(request, *args, **kwargs)

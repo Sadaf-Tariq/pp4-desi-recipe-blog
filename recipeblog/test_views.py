@@ -17,9 +17,9 @@ class TestViews(TestCase):
         self.category = RecipeCategory.objects.create(food_type='bread')
         self.method = RecipeMethod.objects.create(recipe_method='frying')
         self.recipe = Recipe.objects.create(
-            category=self.category, method=self.method, author_email=self.user, title='Test',
-            ingredients='fish', instructions='cook', cooking_time='15', prep_time='30',
-            servings='3', calories='300')
+            category=self.category, method=self.method, author_email=self.user,
+            title='Test', ingredients='fish', instructions='cook',
+            cooking_time='15', prep_time='30', servings='3', calories='300')
 
     def test_home_page(self):
         """Test for home page template"""
@@ -51,13 +51,11 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'recipes_method.html')
 
-
     def test_full_recipe_page(self):
         response = self.client.get(reverse('full_recipe',
                                            args=[self.recipe.slug]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'full_recipe.html')
-
 
     def test_edit_recipe_page(self):
         response = self.client.get(reverse('edit_recipe',
@@ -70,6 +68,3 @@ class TestViews(TestCase):
                                            args=[self.recipe.slug]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'delete_recipe.html')
-
-
-    
