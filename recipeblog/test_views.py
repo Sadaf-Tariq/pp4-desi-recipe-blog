@@ -52,21 +52,21 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'recipes_method.html')
 
     def test_full_recipe_page(self):
-         """Test full recipe page template"""
+        """Test full recipe page template"""
         response = self.client.get(reverse('full_recipe',
                                            args=[self.recipe.slug]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'full_recipe.html')
 
     def test_edit_recipe_page(self):
-         """Test for  edit recipe page template"""
+        """Test for  edit recipe page template"""
         response = self.client.get(reverse('edit_recipe',
                                            args=[self.recipe.slug]))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'edit_recipe.html')
 
     def test_delete_recipe_page(self):
-         """Test for delete recipe page template"""
+        """Test for delete recipe page template"""
         response = self.client.get(reverse('delete_recipe',
                                            args=[self.recipe.slug]))
         self.assertEqual(response.status_code, 200)
