@@ -245,15 +245,15 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
   * All the information from database title, category, method, author_name, featured_iamge, ingredients, instructions, prep_time,
     cooking_time, servings, and calories are displayed
     
-  <img src="/README_FILES/full-recipe-header.png" alt="Full Recipe header" width="800"/>
+   <img src="/README_FILES/full-recipe-header.png" alt="Full Recipe header" width="800"/>
 
   * If the user is not logged in, they will not be able to like, rate, or comment
 
-  <img src="/README_FILES/like-rate-com.png" alt="Like and rate for non-logged users" width="800"/>
+   <img src="/README_FILES/like-rate-com.png" alt="Like and rate for non-logged users" width="800"/>
 
   * If the user is logged in, the options to like and rate will appear
  
-  <img src="/README_FILES/logged-in-like-rating-comments.png" alt="[Like and rate for logged-in users" width="800"/>
+   <img src="/README_FILES/logged-in-like-rating-comments.png" alt="[Like and rate for logged-in users" width="800"/>
 
   * The ingredients and Instruction section of the recipe is also available in detail
     
@@ -273,8 +273,8 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
  
   *  There are two buttons available to 'Edit' or 'Cancel'
 
-    <img src="/README_FILES/edit_Recipe.png" alt="Edit Recipe" width="500" height="450"/>
-    <img src="/README_FILES/submit-edit-recipe.png" alt="Edit Recipe button" width="500" height="450"/>
+     <img src="/README_FILES/edit_Recipe.png" alt="Edit Recipe" width="500" height="450"/>
+     <img src="/README_FILES/submit-edit-recipe.png" alt="Edit Recipe button" width="500" height="450"/>
 
 * Delete Recipe
 
@@ -309,7 +309,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
    * It redirects the user to a sign put page to confirm the process
 
-  <img src="/README_FILES/sign-out.png" alt="Sign-out" width="550" height="450"/>
+    <img src="/README_FILES/sign-out.png" alt="Sign-out" width="550" height="450"/>
      
 * 404
 
@@ -321,7 +321,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 # Agile Methodology
   * Agile methodology is used for project planning and development. Start from the planning until development user stories were created and implemented according to the order to stay organized. I used GitHub and its project features, Milestone, Labels, and Kanban Board to apply agile methodology.
   * User stories with acceptance criteria and tasks were defined and prioritized using MosCoW prioritization
-  * The [user stories]((https://github.com/users/Sadaf-Tariq/projects/2)) can be found here
+  * The [user stories](https://github.com/users/Sadaf-Tariq/projects/2) can be found here
     
     
 # Technologies Used
