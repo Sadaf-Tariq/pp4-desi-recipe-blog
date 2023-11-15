@@ -127,43 +127,43 @@ I used [CI Python Linter](https://pep8ci.herokuapp.com/) for python code validat
 
 - Home page
 
-  <img src="/README_FILES/lighthouse.png" alt="Lighthouse home page" width="400" height="150" />
+  <img src="/README_FILES/lighthouse.png" alt="Lighthouse home page" width="500" height="150" />
 
 - All recipes page
 
-  <img src="/README_FILES/lighthouserecipes.png" alt="Lighthouse all recipe page" width="400" height="150" />
+  <img src="/README_FILES/lighthouserecipes.png" alt="Lighthouse all recipe page" width="500" height="150" />
 
 - Method page
 
-  <img src="/README_FILES/lighthousemethod.png" alt="Lighthouse method page" width="400" height="150" />
+  <img src="/README_FILES/lighthousemethod.png" alt="Lighthouse method page" width="500" height="150" />
 
 - Full recipe page
 
-  <img src="/README_FILES/lighthousefullrecipe.png" alt="Lighthouse full recipe page" width="400" height="150" />
+  <img src="/README_FILES/lighthousefullrecipe.png" alt="Lighthouse full recipe page" width="500" height="150" />
 
 - Add recipe page
 
-  <img src="/README_FILES/lighthouseaddrecipe.png" alt="Lighthouse add recipe page" width="400" height="150" />
+  <img src="/README_FILES/lighthouseaddrecipe.png" alt="Lighthouse add recipe page" width="500" height="150" />
 
 - Update recipe page
 
-  <img src="/README_FILES/lighthouseupdaterecipe.png" alt="Lighthouse update page" width="400" height="150" />
+  <img src="/README_FILES/lighthouseupdaterecipe.png" alt="Lighthouse update page" width="500" height="150" />
 
 - Delete recipe page
 
-  <img src="/README_FILES/lighthousedelete.png" alt="Lighthouse delete page" width="400" height="150" />
+  <img src="/README_FILES/lighthousedelete.png" alt="Lighthouse delete page" width="500" height="150" />
 
 - SignUp page
 
-  <img src="/README_FILES/lighthousesignup.png" alt="Lighthouse sign up page" width="400" height="150" />
+  <img src="/README_FILES/lighthousesignup.png" alt="Lighthouse sign up page" width="500" height="150" />
 
 - SignIn page
 
-  <img src="/README_FILES/lighthousesignup.png" alt="Lighthouse sign in page" width="400" height="150" />
+  <img src="/README_FILES/lighthousesignup.png" alt="Lighthouse sign in page" width="500" height="150" />
   
 - SignOut page
 
-  <img src="/README_FILES/lighthousesignout.png" alt="Lighthouse sign out page" width="400" height="150" />
+  <img src="/README_FILES/lighthousesignout.png" alt="Lighthouse sign out page" width="500" height="150" />
 
 
 
