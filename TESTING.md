@@ -166,14 +166,33 @@ I used [CI Python Linter](https://pep8ci.herokuapp.com/) for python code validat
   <img src="/README_FILES/lighthousesignout.png" alt="Lighthouse sign out page" width="500" height="150" />
 
 
-
 # Responsiveness and Browser Compatibility
 
 - I have tested the website on various browsers including Google Chrome, Microsoft Edge, Safari, and Mozilla Firefox
    - The website is working as expected in all browsers, all the pages are responsive and behaving as expected
       on all screen sizes.
+     
+# Aotumated Testing
 
+- users app testing
 
+  - The test code for [users/tests.py](https://github.com/Sadaf-Tariq/pp4-desi-recipe-blog/blob/main/users/tests.py) can be found here
+
+    <img src="/README_FILES/users.tests.png" alt="user app tests.py file" width="500" height="130" />
+
+- recipeblog app testing
+
+  - The test code for [recipeblog/test_views.py](https://github.com/Sadaf-Tariq/pp4-desi-recipe-blog/blob/main/recipeblog/test_views.py) can be found here
+
+    <img src="/README_FILES/recipeblog-testviews.png" alt="user app tests.py file" width="500" height="130" />
+
+  - The test code for [recipeblog/test_forms.py](https://github.com/Sadaf-Tariq/pp4-desi-recipe-blog/blob/main/recipeblog/test_forms.py) can be found here
+
+    <img src="/README_FILES/recipeblog-testforms.png" alt="user app tests.py file" width="500" height="130" />
+
+  - The test code for [recipeblog/test_models.py](https://github.com/Sadaf-Tariq/pp4-desi-recipe-blog/blob/main/recipeblog/test_models.py) can be found here
+
+    <img src="/README_FILES/recipeblog-testmodels.png" alt="user app tests.py file" width="500" height="130" />
 
 
 
