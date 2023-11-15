@@ -88,11 +88,11 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
 
 - The home page planning is done using this wireframe as a guide, there is another row was added during the development of food preparation methods.
 
-<img src="/README_FILES/wirefram2.png" alt="RecipeList Wireframe" width="400" height="400"/>
+<img src="/README_FILES/wirefram3.png" alt="Add recipe form Wireframe" width="400" height="400"/>
 
 - This is a general recipe list page wireframe, the same planning is used for the category and method recipes list.
 
-<img src="/README_FILES/wirefram3.png" alt="Add recipe form Wireframe" width="400" height="400"/>
+<img src="/README_FILES/wirefram2.png" alt="RecipeList Wireframe" width="400" height="400"/>
 
 - This wireframe is made for adding a recipe page, the same is used for editing recipes and similar for login, sign up, and sign out pages.
 
