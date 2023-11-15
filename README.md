@@ -265,7 +265,6 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
      ![Comments not logged-in user](/README_FILES/comments.png)
      ![Comments logged-in user](/README_FILES/comments_loggedin.png)
     
- 
 * Edit Recipe
 
   * The users who have created their own recipes will be able to edit their own recipes
@@ -285,7 +284,7 @@ I used [DrawSQL](https://drawsql.app/) to draw and visualize the database schema
  
   *  There are two buttons available to 'Delete' or 'Cancel'
 
-   <img src="/README_FILES/delete-recipe.png" alt="Delete Recipe" width="550" height="450"/>
+     <img src="/README_FILES/delete-recipe.png" alt="Delete Recipe" width="550" height="450"/>
 
 
 ​* Authentication
